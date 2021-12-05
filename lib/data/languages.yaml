@@ -989,9 +989,7 @@ JSP:
   id-by:
     extension: [jsp, jspf]
   filters:
-  - {method: "decomment", language: "jsp"}
   - {method: "remove", pattern: '//.*$', flags: "gm"}
-  - {method: "add-newlines"}
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
@@ -2036,9 +2034,7 @@ Velocity Template Language:
   id-by:
     extension: [vm]
   filters:
-  - {method: "decomment", language: "jsp"}
   - {method: "remove", pattern: "##.*$", flags: "gm"}  # remove comments to EOL
-  - {method: "add-newlines"}
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
   - {method: "remove-between", lhs: '#**', rhs: '*#' }
   scale-factor: 1.00

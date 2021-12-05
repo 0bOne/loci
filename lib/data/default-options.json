@@ -1,4 +1,6 @@
 {
+    "$comment": "these are all the options to achieve full usefulness",
+    "exclude_dir": [".svn", ".cvs", ".hg", ".git", ".bzr", ".snapshot", ".config"],
     "by_file": "not_implemented_yet",
     "by_file_by_lang": "not_implemented_yet",
     "categorized": "not_implemented_yet",
@@ -7,7 +9,6 @@
     "include_lang": "not_implemented_yet",
     "exclude_content": "not_implemented_yet",
     "exclude_lang": "not_implemented_yet",
-    "exclude_dir": ".svn, .cvs, .hg, .git, .bzr, .snapshot, .config",
     "exclude_list_file": "not_implemented_yet",
     "explain": "not_implemented_yet",
     "extract_with": "not_implemented_yet",
@@ -27,7 +28,6 @@
     "show_lang": "not_implemented_yet",
     "progress_rate": "not_implemented_yet",
     "print_filter_stages": "not_implemented_yet",
-    "report_file": "not_implemented_yet",
     "report_file": "not_implemented_yet",
     "script_lang": "not_implemented_yet",
     "sdir": "not_implemented_yet",

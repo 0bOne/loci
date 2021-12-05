@@ -32,7 +32,7 @@ function processTest(folderName, count)
 {
     const inputFolder = path.resolve(__dirname, "tests", "samples", folderName);
     
-    console.log("counting folder: " + count + ": " + inputFolder);
+    //console.log("counting folder: " + count + ": " + inputFolder);
 
     const jc = new Loci();
     const startTime = new Date();
@@ -43,7 +43,7 @@ function processTest(folderName, count)
     const difference = endTime.getTime() - startTime.getTime();
     const seconds = Math.round(difference / 10) / 100;
     
-    console.log("time taken: " + seconds + " s");
+    //console.log("time taken: " + seconds + " s");
     console.log(output);
 
     const yamlFile = path.resolve(__dirname, "tests", "counts", folderName + ".yaml");
@@ -69,7 +69,7 @@ function processTest(folderName, count)
             }
         }
     }
-
+ 
     AssertEqual(expectedCounts.header.n_files, output.files.total, folderName +"/total files" );
     AssertEqual(expectedCounts.SUM.blank, output.totals.blank, folderName +"/total blank");
     AssertEqual(expectedCounts.SUM.comment, output.totals.comment, folderName +"/total comment");
@@ -86,6 +86,13 @@ function processTest(folderName, count)
         AssertEqual(expected.code, actual.code, folderName + "/" + languageId + "/code");
         //ensure the total matches code+comment+blanks in the result:
         AssertEqual(actual.blank + actual.comment + actual.code, actual.total, folderName + "/" + languageId + "/total");
+
+        console.log("|" + folderName + "| " 
+        + actual.files + "| "   
+        + actual.blank + "| "
+        + actual.comment + "| "
+        + actual.code + "| "
+        + languageId + "| "); 
     }
 }
 

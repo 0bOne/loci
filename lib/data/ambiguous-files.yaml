@@ -4,19 +4,19 @@ ADSO/IDSM:
 Ant/XML:
   id-by:
     filename: [build.xml]
-    heuristic: Ant_or_XML #means it will resolve to another language in the non-ambiguous list
+    rules-todo: Ant or XML
 D/dtrace:
   id-by:
     extension: [d]
-    heuristic: todo_d_or_dtrace
+    rules-todo: d or dtrace
 Maven/XML:
   id-by:
     filename: [pom.xml]
-    heuristic: Maven_or_XML
+    rules-todo: Maven or XML
 Verilog-SystemVerilog/Coq:
   id-by:
     extension: [v]
-    heuristic: Verilog_or_Coq
+    rules-todo: Verilog or Coq
 TypeScript/Qt Linguist:
   id-by:
     extension: [ts]
