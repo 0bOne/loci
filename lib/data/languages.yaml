@@ -1,0 +1,2312 @@
+#non-ambiguous language definitions
+ABAP:
+  id-by:
+    extension: [abap]
+  filters:
+  - {method: "remove", pattern: '^\*'}
+  scale-factor: 5.00
+ActionScript:
+  id-by:
+    extension: [as]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.36
+  line-continuation: '\\\\$'
+Ada:
+  id-by:
+    extension: [ada, adb, ads,  pad]
+  filters:
+  - {method: "remove", pattern: '\--.*$', flags: "gm"} # pipe comments to EOL
+  scale-factor: 0.52
+  line-continuation: '\\\\$'
+ADSO:
+  id-by:
+    extension: [adso]
+  filters:
+  - {method: "remove", pattern: '^\s*\*[\+\!]'}  
+  scale-factor: 3.00
+Agda:
+  id-by:
+    extension: [agda, lagda]
+  filters:
+  - {method: "remove", pattern: '\-\-.*$', flags: "gm"}
+  - {method: "remove-between", lhs: "{-", rhs: "-}"}
+  - {method: "remove-between", lhs: 'end\\{code}', rhs: 'begin\\{code}'}
+  scale-factor: 2.11
+AMPLE:
+  id-by:
+    extension: [ample, dofile, startup]
+  filters:
+  #- {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove", pattern: '\//.*$', flags: "gm"} # pipe comments to EOL
+  scale-factor: 2.00
+Ant:
+  id-by:
+    extension: [build.xml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+ANTLR Grammar:
+  id-by:
+    extension: [g, g4]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Apex Class:
+  id-by: ~
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+Apex Trigger:
+  id-by:
+    extension: [trigger]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.4 
+APL:
+  id-by:
+    extension: [apl, apla, aplf, aplo, apln, aplc, apli, dyalog, dyapp, mipage]
+  filters:
+  - {method: "remove", pattern: '\⍝.*$', flags: "gm"} # comments to EOL
+  scale-factor: 2.50
+Arduino Sketch:
+  id-by:
+    extension: [ino, pde]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "replace", pattern: '\xa0', with=" "}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+AsciiDoc:
+  id-by:
+    extension: [adoc, asciidoc]
+  filters:
+  - {method: "remove-between", lhs: '////', rhs: '////'}  #17
+  - {method: "remove", pattern: '\/\/.*$', flags: "gm"} # comments to EOL  #3
+  scale-factor: 1.50
+ASP:
+  id-by:
+    extension: [axd, asa, asp]
+  filters:
+  - {method: "remove", pattern: '\47.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.29
+  line-continuation: '\\\\$'
+ASP.NET:
+  id-by:
+    extension: [asax, ascx, asmx, aspx, master, sitemap,  webinfo]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove-between", lhs: '<%--', rhs: '--%>' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.29
+  line-continuation: '\\\\$'
+AspectJ:
+  id-by:
+    extension: [aj]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.36
+  line-continuation: '\\\\$'
+Assembly:
+  id-by:
+    extension: [nasm, a51, asm,  s, S]
+  filters:
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments to EOL
+  - {method: "remove", pattern: '^\s*\*.*$', flags: "gm"} # pipe comments to EOL
+  - {method: "remove", pattern: '\|.*$', flags: "gm"} # pipe comments to EOL
+  - {method: "remove", pattern: '#.*$', flags: "gm"}  # hash comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"} # semicolon comments to EOL
+  - {method: "remove", pattern: '\@.*$', flags: "gm"} #@ comments to EOL
+  - {method: "remove", pattern: '--.*$', flags: "gm"} #-- comments to EOL
+  - {method: "remove", pattern: "\\\\ *\n", flags: "gs"}  #join C++ style continued lines into a single line
+  scale-factor: 0.25  
+AutoHotkey:
+  id-by:
+    extension: [ahkl]
+  filters:
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 1.29
+awk:
+  id-by:
+    extension: [nawk, mawk, gawk, auk, awk]
+  filters:
+  - {method: "remove", pattern: '#.*$', flags: "gm"}
+  scale-factor: 3.81
+  line-continuation: '\\\\$'
+Bazel:
+  id-by:
+    extension: [Starlark, BUILD]
+    filename: [BUILD, WORKSPACE]
+  filters:
+  - {method: "remove", pattern: '#.*$', flags: "gm"}
+  scale-factor: 1.00
+bc: 
+  id-by:
+    shebang: [bc]
+  filters:
+  - {method: "remove", pattern: '#.*$', flags: "gm"}
+  scale-factor: 1.50
+  line-continuation: '\\\\$'
+BizTalk Orchestration:
+  id-by:
+    extension: [odx]
+  filters:
+  - {method: "remove", pattern: '^\s*#.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.00
+BizTalk Pipeline:
+  id-by:
+    extension: [btp]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.00
+Blade:
+  id-by:
+    extension: [blade, blade.php]
+  filters:
+  - {method: "remove-between", lhs: '{{--', rhs: '--}}' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.00
+Bourne Again Shell:
+  id-by:
+    extension: [bash]
+    shebang: [bash]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+  line-continuation: '\\\\$'
+Bourne Shell:
+  id-by:
+    extension: [sh]
+    shebang: [sh]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+  line-continuation: '\\\\$'
+Brainfuck:
+  id-by:
+    extension: [b, bf]
+  filters:
+  - {method: "count-only-matches", pattern: '^\s*(\+|\-|\<|\>|\[|\]|\,|\.)+.*$', flags: "gm"} #count only these lines
+  scale-factor: 0.10
+BrightScript:
+  id-by:
+    extension: [brs]
+  filters:
+  - {method: "remove", pattern: 'rem.*$', flags: "gmi"} # comments to EOL
+  - {method: "remove", pattern: '^\s*\x27.*$', flags: "gm"}
+  scale-factor: 2.00
+builder:
+  id-by:
+    extension: [xml.builder]
+  filters:
+  - {method: "remove", pattern: 'xml_markup.comment!.*$', flags: "gm"} # comments to EOL
+  scale-factor: 2.00
+C:
+  id-by:
+    extension: [idc, cats, c, pgc, ec]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"', "'"], targets: ['//', '/*', '*/']}
+  - {method: "mask-in-comment-blocks", start: "/*", end: "*/", targets: ["//"]}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}    # join C++ style continued lines
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 0.77
+  line-continuation: '\\\\$'  
+C#:
+  id-by: ~
+  scale-factor: 1.36
+  line-continuation: '\\\\$'  
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+C# Designer:
+  id-by:
+    extension: [designer.cs]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.36
+  line-continuation: '\\\\$'
+C++:
+  id-by:
+    extension: [tpp, tcc, ipp, inl, h++, C, cc, c++, cpp, CPP, cxx, pcc, inl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: '\/\/.*$', flags: "gm"}     # remove comments to EOL
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  scale-factor: 1.51
+  line-continuation: '\\\\$'
+C/C++ Header:
+  id-by:
+    extension: [h, H, hh, hpp, hxx]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove-between", lhs: '/*', rhs: '*/'} 
+  - {method: "remove", pattern: '\/\/.*$', flags: "gm"}     # remove comments to EOL
+  scale-factor: 1.00
+  line-continuation: '\\\\$'
+Cake Build Script:
+  id-by:
+    extension: [cake]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 1.36
+  line-continuation: '\\\\$'
+CCS:
+  id-by:
+    extension: [ccs]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 5.33
+Chapel:
+  id-by:
+    extension: [chpl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.96
+Clean:
+  id-by:
+    extension: [icl, dcl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Clojure:
+  id-by:
+    extension: [riemann.config, hic, cljx, cljscm, cljs.hl, cl2, boot, clj]
+  filters:
+  - {method: "remove", pattern: '\;.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.25
+ClojureC:
+  id-by:
+    extension: [cljc]
+  filters:
+  - {method: "remove", pattern: '\;.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.25
+ClojureScript:
+  id-by:
+    extension: [cljs]
+  filters:
+  - {method: "remove", pattern: '\;.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.25
+CMake:
+  id-by:
+    extension: [cmake.in, CMakeLists.txt, cmake]
+    filename: [cmakelists.txt, CMakeLists.txt]
+  filters: 
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.00
+  line-continuation: '\\\\$'
+COBOL:
+  id-by:
+    extension: [cpy, cobol, ccp, cbl, CBL, cob, COB]
+  filters:
+  #- {method: "debug-break"} # causes debug break
+  - {method: "remove", pattern: '^\*.*$', flags: "gm"} # comments to EOL, not free format
+  - {method: "remove", pattern: '^......\*.*$', flags: "gm"} # comments to EOL, if not free format
+  - {method: "quit-unless", pattern: '^......\$.*SET.*SOURCEFORMAT.*FREE', flags: "gmi"} #stop filtering if not free format
+  - {method: "remove", pattern: '^\s*\*', flags: "gm"} # comments to EOL,  (free format)
+  scale-factor: 1.04
+CoffeeScript:
+  id-by:
+    extension: [iced, cjsx, cakefile, _coffee, coffee]
+  filters: 
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL
+  scale-factor: 2.00
+ColdFusion:
+  id-by:
+    extension: [cfml, cfm]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->'}
+  scale-factor: 4.00
+ColdFusion CFScript:
+  id-by:
+    extension: [cfc]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 4.00
+Crystal:
+  id-by:
+    extension: [cr]
+    shebang: [crystal]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.50
+CSON:
+  id-by:
+    extension: [cson]
+  filters: 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL   
+  scale-factor: 2.50
+CSS:
+  id-by:
+    extension: [css]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.0
+CSV:
+  id-by:
+    extension: [csv]
+  filters:
+  - {method: "remove", pattern: '\$.*$', flags: "gm"}  # remove comments to EOL  
+  scale-factor: 0.1
+C Shell:
+  id-by:
+    extension: [csh, tcsh]
+    shebang: [csh, tcsh]
+  filters:
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+  line-continuation: '\\\\$'
+Cucumber:
+  id-by:
+    extension: [feature, frag, comp]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.00
+CUDA:
+  id-by:
+    extension: [cu, cuh]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+Cython:
+  id-by:
+    extension: [pxi, pxd, pyx]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: "'''", rhs: "'''"}  # remove docstring
+  - {method: "remove-between", lhs: '"""', rhs: '"""'}  # remove docstring
+  scale-factor: 3.80
+  line-continuation: '\\\\$'  
+D:
+  scale-factor: 1.70
+  id-by:
+    shebang: [dmd]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/', '/+', '+/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/+', rhs: '+/' }
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove-between", lhs: '/+', rhs: '+/'}
+  line-continuation: '\\\\$'
+DAL:
+  id-by:
+    extension: [da]
+  filters:
+  - {method: "remove-between", lhs: '[', rhs: ']' }
+  scale-factor: 1.50
+Dart:
+  id-by:
+    extension: [dart]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+  line-continuation: '\\\\$'
+Delphi Form:
+  id-by:
+    extension: [dfm]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '\{[^$]', rhs: '}'}
+  - {method: "remove-between", lhs: '(*', rhs: '*)' }
+  scale-factor: 2.00
+dhall:
+  id-by:
+    extension: [dhall]
+  filters:
+  - {method: "remove", pattern: '\-\-.*$', flags: "gm"}
+  - {method: "remove-between", lhs: "{-", rhs: "-}"}
+  - {method: "remove-between", lhs: 'end\\{code}', rhs: 'begin\\{code}'}
+  scale-factor: 2.11
+DIET:
+  id-by:
+    extension: [dt]
+  filters:
+  - {method: "remove-indented-block", expression: '^(\s*)(//)\s*$', flags: "gm"}
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.00
+diff:
+  id-by:
+    extension: [patch, diff]
+  filters:
+  - {method: "remove", pattern: '^#'}
+  - {method: "remove", pattern: '^\-\-\-'}
+  - {method: "remove", pattern: '^\+\+\+'}
+  - {method: "remove", pattern: '^\s'}
+  scale-factor: 1.00
+DITA:
+  id-by:
+    extension: [dita]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "common-filter", language: "HTML"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Dockerfile:
+  id-by:
+    extension: [Dockerfile, dockerfile]
+    prefix: [Dockerfile]
+    filename: [Dockerfile.m4, Dockerfile, Dockerfile.cmake, dockerfile, dockerfile.m4, dockerfile.cmake]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+DOORS Extension Language:
+  id-by:
+    extension: [dxl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.50
+DOS Batch:
+  id-by:
+    extension: [bat, BAT, cmd, CMD, btm, BTM]
+  filters:
+  - {method: "remove", pattern: '^\s*rem.*$', flags: "gmi"}  # remove comments to EOL
+  - {method: "remove", pattern: "::.*$", flags: "gm"}  # remove comments to EOL
+  scale-factor: 0.63
+DTD:
+  id-by:
+    extension: [dtd]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Drools:
+  id-by:
+    extension: [drl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+dtrace:
+  id-by:
+    shebang: [dtrace]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+ECPP:
+  id-by:
+    extension: [ecpp, EE, eex]
+  filters:
+  - {method: "remove-between", lhs: '<%doc>', rhs: '</%doc>' }
+  - {method: "remove-between", lhs: '<#', rhs: '#>' }
+  - {method: "remove-between", lhs: '<%#', rhs: '%>' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+EJS:
+  id-by:
+    extension: [ejs]
+  filters:
+  - {method: "remove-between", lhs: '<%#', rhs: '%>' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.50
+Elixir:
+  id-by:
+    extension: [exs, ex]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '@moduledoc """', rhs: '"""'}
+  - {method: "remove-between", lhs: '@doc ~S"""', rhs: '"""'}
+  - {method: "remove-between", lhs: "@doc ~c'''", rhs: "'''"}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.11
+Elm:
+  id-by:
+    extension: [elm]
+  filters:
+  - {method: "remove", pattern: '\-\-.*$', flags: "gm"}
+  - {method: "remove-between", lhs: "{-", rhs: "-}"}
+  - {method: "remove-between", lhs: 'end\\{code}', rhs: 'begin\\{code}'}
+  scale-factor: 2.50
+Embedded Crystal:
+  id-by:
+    extension: [ecr]
+  filters:
+  - {method: "remove-between", lhs: '<%#', rhs: '%>' }
+  scale-factor: 2.00
+ERB:
+  id-by:
+    extension: [erb, ERB]
+  filters:
+  - {method: "remove-between", lhs: '<%#', rhs: '%>' }
+  scale-factor: 2.00
+Erlang:
+  id-by:
+    extension: [yrl, xrl, rebar.lock, rebar.config.lock, rebar.config, emakefile, app.src, erl, hrl]
+    shebang: [escript]
+  filters:
+  - {method: "remove", pattern: '%.*$', flags: "gm"}
+  scale-factor: 2.11
+Expect:
+  id-by:
+    extension: [exp]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL  
+  scale-factor: 2.00
+  line-continuation: '\\\\$'
+F#:
+  id-by:
+    extension: [fsi]
+  filters:
+  - {method: "remove-between", lhs: '(*', rhs: '*)' }
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.50
+F# Script:
+  id-by:
+    extension: [fsx]
+  filters:
+  - {method: "remove-between", lhs: '(*', rhs: '*)' }
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.50
+Fennel:
+  id-by:
+    extension: [fnl]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 2.50
+Fish Shell:
+  id-by:
+    extension: [fish]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+Focus:
+  id-by:
+    extension: [focexec]
+  filters:
+  - {method: "remove", pattern: '\-\*.*$', flags: "gm"}
+  scale-factor: 1.90
+Forth:
+  id-by:
+    extension: [forth, fr, frt, fth, f83, fb, fpm, e4, rx, ft, 4th]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '\\\\.*$', flags: "gm"}
+  - {method: "doc-to-c", language: "forth"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\\\\.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.25
+Fortran 77:
+  id-by:
+    extension: [f77, F77, F, FOR, ftn, FTN,  pfo]
+  filters:
+  - {method: "remove", pattern: '^![a-z]{1,3}\$', flags: "gmi"} #prevent misinterpretation as a comment
+  - {method: "remove", pattern: '^\s*\!.*$', flags: "gm"}
+  - {method: "remove", pattern: '^\s*c.*$', flags: "gmi"}
+  - {method: "remove", pattern: '^\s*\*.*$', flags: "gm"}
+  scale-factor: 0.75
+Fortran 90:
+  id-by:
+    extension: [f90, F90, f95, F95]
+  filters:
+  - {method: "remove", pattern: '^\s*c.*$', flags: "gmi"}
+  - {method: "remove", pattern: '^\s*!.*$', flags: "gm"}
+  scale-factor: 1.00
+Freemarker Template:
+  id-by:
+    extension: [ftl]
+  filters:
+  - {method: "remove-between", lhs: '<#--', rhs: '-->' }
+  scale-factor: 1.48
+FXML:
+  id-by:
+    extension: [fxml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Fortran 95:
+  filters:
+  - {method: "decomment", language: "fortran77"}
+  - {method: "decomment", language: "fortran90"}
+  - {method: "remove", pattern: '\!.*$', flags: "gm"}
+GDScript:
+  id-by:
+    extension: [gd]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.50
+Gencat NLS:
+  id-by:
+    extension: [msg]
+  filters:
+  - {method: "remove", pattern: '^\$ .*$', flags: "gm"} # comments to EOL 
+  scale-factor: 1.50
+  line-continuation: '\\\\$'
+Glade:
+  id-by:
+    extension: [glade]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.00
+Gleam:
+  id-by:
+    extension: [gleam]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.50
+GLSL:
+  id-by:
+    extension: [vshader, vsh, vrx, gshader, glslv, geo, fshader, fsh, frg, fp, glsl, vert, tesc, tese, geom]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"', "'"], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'} 
+  scale-factor: 2.00
+Go:
+  id-by:
+    extension: [go]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.50
+  line-continuation: '\\\\$' 
+Godot Resource:
+  id-by:
+    extension: [tres]
+  filters:
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.50
+Godot Scene:
+  id-by:
+    extension: [tscn]
+  filters:
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.50
+Gradle:
+  id-by:
+    extension: [gradle, gradle.kts]
+  filters: 
+  - {method: "mask-in-strings", quotes: [ "'", '"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 4.00
+Grails:
+  id-by:
+    extension: [gsp]
+  filters:
+  - {method: "decomment", language: "jsp"}
+  - {method: "add-newlines"}
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.48
+GraphQL:
+  id-by:
+    extension: [graphqls, gql, graphql]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 4.00
+Groovy:
+  id-by:
+    extension: [jenkinsfile, gvy, gtpl, grt, groovy, gant]
+    shebang: [groovy]
+  filters:
+  - {method: "mask-in-strings", quotes: ["'", '"', '"""', "'''"], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 4.10
+Haml:
+  id-by:
+    extension: [haml.deface, haml]
+  filters:
+  - {method: "remove-indented-block", expression: '^(\s*)(\/|-#)\s*$', flags: "gm"}
+  - {method: "remove", pattern: '^\s*/\s*.*$', flags: "gm"}
+  - {method: "remove", pattern: '^\s*-#\s*.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.50 
+Handlebars:
+  id-by:
+    extension: [handlebars, hbs]
+  filters:
+  - {method: "remove-between", lhs: '{{!--', rhs: '--}}'} 
+  - {method: "remove-between", lhs: '{{!', rhs: '}}' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.50
+Harbour:
+  id-by:
+    extension: [hb]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '\&\&*.*$', flags: "gm"}
+  - {method: "remove", pattern: 'note.*$', flags: "gmi"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: '\*.*$', flags: "gm"}
+  scale-factor: 2.00
+lex:
+  id-by:
+    extension: [lex, l]
+  filters:
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+  line-continuation: '\\\\$'
+Haskell:
+  id-by:
+    extension: [lhs, le, hsc, hs]
+  #debug-save: true
+  filters:
+  - {method: "remove", pattern: '\-\-.*$', flags: "gm"}
+  - {method: "replace", pattern: '^\s*{-\#.*-}', with: "PRAGMA_STATEMENT", flags: "gm"}
+  - {method: "remove-between", lhs: "{-", rhs: "-}", save: true}
+  - {method: "remove-outside-block", begin: '\begin{code}', end: '\end{code}'}
+  - {method: "count-only-matches", pattern: "^>.*$", flags: "gm", forgiving: true}
+  - {method: "remove", pattern: '^> *$', flags: "gm" }  # empty code line
+  scale-factor: 2.11
+Haxe:
+  id-by:
+    extension: [hxsl, hx]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+HCL:
+  id-by:
+    extension: [tfvars, hcl, tf, nomad]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '^\s*#.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+HLSL:
+  id-by:
+    extension: [hlsli, fxh, hlsl, shader, cg, cginc]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Hoon:
+  id-by:
+    extension: [hoon]
+  filters:
+  - {method: "remove", pattern: ':[:><].*$', flags: "gm"}
+  scale-factor: 2.00
+HTML:
+  id-by:
+    extension: [xht, html.hl, htm, html]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+IDL:
+  id-by:
+    extension: [dlm, idl]
+    shebang: [idl]
+  filters:
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL
+  scale-factor: 3.80
+  line-continuation: '\$\\$'
+Idris:
+  id-by:
+    extension: [idr]
+  filters:
+  - {method: "remove", pattern: '\-\-.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: '\|\|\|.*$', flags: "gm"} # comments to EOL
+  - {method: "remove-between", lhs: '{-', rhs: '-}'}
+  scale-factor: 2.00
+Igor Pro:
+  id-by:
+    extension: [ipf, itk, Tcl/Tk]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"} # comments to EOL
+  scale-factor: 4.00
+  line-continuation: '\\$'  
+Imba:
+  id-by:
+    extension: [imba]
+  filters:
+  - {method: "remove-between", lhs: '###', rhs: '###'} 
+  - {method: "remove", pattern: '#\s.*$', flags: "gm"}
+  scale-factor: 3.00
+INI:
+  id-by:
+    extension: [prefs, lektorproject, buildozer.spec, ini]
+  filters:
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.00
+InstallShield:
+  id-by:
+    extension: [ism]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+IPL: 
+  id-by:
+    extension: [ipl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Jam:
+  id-by:
+    filename: [Jamfile, jamfile, Jamrules]
+  filters:
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+Java:
+  id-by:
+    extension: [java]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\\\$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.36
+JavaScript:
+  id-by:
+    extension: [xsjslib, xsjs, ssjs, sjs, pac, njs, mjs, jss, jsm, jsfl, jscad, jsb, jakefile, jake, bones, _js, js, es6]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"', '"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.48
+  line-continuation: '\\\\$'
+JavaServer Faces:
+  id-by:
+    extension: [jsf, JS, jsx]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.5 
+JCL:
+  id-by:
+    extension: [jcl]
+  filters:
+  - {method: "remove", pattern: '^//\*.*$', flags: "gm"}  
+  - {method: "remove", pattern: '^\s*//\s*$', flags: "gm"} 
+  scale-factor: 1.67
+Jinja Template:
+  id-by:
+    extension: [jinja, jinja2]
+  filters:
+  - {method: "remove-between", lhs: '{#', rhs: '#}' }
+  scale-factor: 1.5 
+JSON:
+  id-by:
+    extension: [yyp, webmanifest, webapp, topojson, tfstate.backup, tfstate, mcmod.info, mcmeta, json-tmlanguage, jsonl, har, gltf, geojson, composer.lock, avsc, watchmanconfig, tern-project, tern-config, htmlhintrc, arcconfig, json]
+  filters:
+  - {method: "remove", pattern: '\$\s.*$', flags: "gm"}
+  scale-factor: 2.50
+JSON5:
+  id-by:
+    extension: [json5]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+  line-continuation: '\\\\$'
+JSP:
+  id-by:
+    extension: [jsp, jspf]
+  filters:
+  - {method: "decomment", language: "jsp"}
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "add-newlines"}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.36
+Julia:
+  id-by: ~
+  filters: 
+  - {method: "remove-between", lhs: '#=', rhs: '=#' }
+  - {method: "remove", pattern: '^\s*#.*$', flags: "gm"}
+  scale-factor: 4.00
+Juniper Junos:
+  id-by:
+    extension: [junos]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Jupyter Notebook:
+  id-by:
+    extension: [ipynb]
+  debug-save: true
+  filters:
+  - {method: "json-keep", j-path: '$.cells[?(@.cell_type == "code")]', root: "cells"}
+  scale-factor: 4.20 
+JSX:
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.48
+  line-continuation: '\\\\$'
+Kermit:
+  id-by:
+    extension: [ksc]
+    shebang: [kermit]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+  line-continuation: '\\\\$'
+Korn Shell:
+  id-by:
+    extension: [ksh]
+    shebang: [ksh]
+  filters:
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+Kotlin:
+  id-by:
+    extension: [ktm, kt, kts]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"', '""'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+LESS:
+  id-by:
+    extension: [less]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.50
+  line-continuation: '\\\\$'
+Lean:
+  id-by:
+    extension: [hlean, lean]
+  filters:
+  - {method: "remove-between", lhs: '/-', rhs: '-/' }
+  - {method: "remove", pattern: '--.*$', flags: "gm"}
+  scale-factor: 3.00
+LFE:
+  id-by:
+    extension: [lfe]
+  filters:
+  - {method: "remove", pattern: '^\s*;;.*$', flags: "gm"} # comments to EOL
+  - {method: "remove-between", lhs: '#|', rhs: '|#' }
+  scale-factor: 1.25
+liquid:
+  id-by:
+    extension: [liquid]
+  filters:
+  - {method: "remove-between", lhs: '{% comment %}', rhs: '{% endcomment %}' }
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 3.00
+Lisp:
+  id-by:
+    extension: [asd, el, lisp, lsp]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['#|', '|#', ";"]}
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"} # comments to EOL
+  - {method: "remove-between", lhs: '#|', rhs: '|#'}
+  scale-factor: 1.25
+Literate Idris:
+  id-by:
+    extension: [lidr]
+  filters:
+  - {method: "count-only-matches", pattern: '^\s*\>.*$', flags: "gm"} #only lines starting with > are code
+  scale-factor: 2.00
+LiveLink OScript:
+  id-by:
+    extension: [oscript]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 3.5 
+LLVM IR:
+  id-by:
+    extension: [ll]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 0.90
+Logos:
+  id-by:
+    extension: [x, xm]
+  filters:
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+Logtalk:
+  id-by:
+    extension: [lgt, logtalk]
+  filters:
+  - {method: "remove", pattern: '\%.*$', flags: "gm"}
+  - {method: "remove", pattern: "//.*$", flags: "gm"} 
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  scale-factor: 2.00
+Lua:
+  id-by:
+    extension: [wlua, rbxs, pd_lua, p8, nse, lua]
+    shebang: [lua]
+  filters:
+  - {method: "remove-between", lhs: '--[====[', rhs: ']====]' }
+  - {method: "remove-between", lhs: '--[===[',  rhs: ']===]' }
+  - {method: "remove-between", lhs: '--[==[',   rhs: ']==]' }
+  - {method: "remove-between", lhs: '--[=[',    rhs: ']=]' }
+  - {method: "remove-between", lhs: '--[[',     rhs: ']]' }
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  scale-factor: 4.00
+  line-continuation: '\\\\$'
+m4:
+  id-by:
+    extension: [m4]
+  filters:
+  - {method: "remove", pattern: '^dnl\s'}
+  scale-factor: 1.00
+make:
+  id-by:
+    extension: [gnumakefile, Gnumakefile, am, makefile, Makefile, mk]
+    filename: [Makefile, makefile, Gnumakefile, gnumakefile]
+    shebang: [make]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.50
+  line-continuation: '\\\\$'
+Mako:
+  id-by:
+    extension: [mao, mako]
+  filters:
+  - {method: "remove", pattern: '##.*$', flags: "gm"}
+  scale-factor: 1.50 # Not sure about the scaling.
+Markdown:
+  id-by:
+    extension: [workbook, ronn, mkdown, mkdn, mkd, mdx, mdwn, mdown, markdown, contents.lr, md]
+  filters:
+  - {method: "remove-between", lhs: '\[(comment|\/\/)?\]\s*:?\s*(<\s*>|#)?\s*\(.*?', rhs: '.*?\)'}
+  scale-factor: 1.00
+MATLAB:
+  id-by: ~          
+  line-continuation: '\.\.\.\s*$'
+  filters:
+  - {method: "remove-between", lhs: '%{', rhs: '%}' }            
+  - {method: "remove", pattern: '%.*$', flags: "gm"}
+  scale-factor: 4.90  
+Mathematica:
+  id-by:
+    extension: [nbp, mathematica, ma, cdf, mt, wl, wlt]
+  filters:
+  - {method: "remove-between", lhs: '(*', rhs: '*)' }
+  scale-factor: 5.00
+Maven:
+  id-by:
+    extension: [pom.xml, pom]
+  scale-factor: 1.90
+Meson:
+  id-by:
+    extension: [meson.build]
+    filename: [meson.build]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 1.00
+  line-continuation: '\\\\$'
+Metal:
+  id-by:
+    extension: [metal]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.51
+  line-continuation: '\\\\$'
+Modula3:
+  id-by:
+    extension: [i3, ig, m3, mg]
+  filters:
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 2.00
+Mojo:
+  id-by:
+    extension: [mojom]
+  filters:
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 2.00
+MSBuild script:
+  id-by:
+    extension: [wdproj, csproj, vcproj, wixproj, btproj, msbuild]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+MUMPS:
+  id-by:
+    extension: [mps]
+  filters:
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"} # comments to EOL
+  scale-factor: 4.21
+Mustache:
+  id-by:
+    extension: [mustache]
+  #debug-save: true
+  filters:
+  - {method: "remove-between", lhs: '{{!', rhs: '}}' }
+  scale-factor: 1.75
+MXML:
+  id-by:
+    extension: [mxml]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  #- {method: "add-newlines"}
+  scale-factor: 1.90
+  line-continuation: '\\\\$'
+Mercury:
+  filters:
+  - {method: "remove", pattern: '\%.*$', flags: "gm"}  # remove comments to EOL
+  scale-factor: 3.00
+NASTRAN DMAP:
+  id-by:
+    extension: [dmap]
+  filters:
+  - {method: "remove", pattern: '\$.*$', flags: "gm"}  # remove comments to EOL
+  scale-factor: 2.35
+NAnt script:
+  id-by:
+    extension: [build]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Nemerle:
+  id-by:
+    extension: [n]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 2.50
+Nim:
+  id-by:
+    extension: [nims, nimrod, nimble, nim.cfg, nim]
+  filters:
+  - {method: "remove-between", lhs: '#[', rhs: ']#' }
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.00
+Nix:
+  id-by: 
+    extension: [nix]
+  filters:
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.70
+Objective-C:
+  id-by: ~
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.96
+  line-continuation: '\\\\$'
+Objective-C++:
+  id-by:
+    extension: [mm]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.96
+  line-continuation: '\\\\$'
+OCaml:
+  id-by:
+    extension: [ml4, eliomi, eliom, ml, mli, mly, mll]
+  filters:
+  - {method: "decomment", language: "ocaml"}
+  scale-factor: 3.00
+  line-continuation: '\\\\$'
+Octave:
+  id-by:
+    shebang: [octave]
+  filters:
+ 
+    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 4.00
+  line-continuation: '\.\.\.\s*$'
+Odin:
+  id-by:
+    extension: [odin]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Oracle Forms:
+  id-by:
+    extension: [fmt]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.67
+Oracle PL/SQL:
+  id-by:
+    extension: [bod, spc, fnc, prc, trg]
+  filters:
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # comments to EOL
+  - {method: "remove-between", lhs: "/*", rhs: '*/'}
+  scale-factor: 2.58
+Oracle Reports:
+  id-by:
+    extension: [rex, Rex, pprx, rex]
+  filters:
+  scale-factor: 2.76
+Pascal:
+  id-by:
+    extension: [p, pas, pascal, lpr, dpr]
+  filters:
+  - {method: "remove-between", lhs: '(*', rhs: '*)' }
+  - {method: "remove-between", lhs: '{', rhs: '}'} 
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 0.88
+Patran Command Language:
+  id-by:
+    extension: [pcl, ses]
+  filters:
+  - {method: "remove", pattern: '\$\#.*$', flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+  line-continuation: '\\\\$'
+Perl:
+  id-by:
+    extension: [rexfile, psgi, ph, makefile.pl, cpanfile, al, ack, perl, plx, pm, plh]
+    shebang: [perl5, perl, miniperl]
+  filters:
+  - {method: 'remove_below', match: '^__(END|DATA)__'}
+  - {method: 'remove-below-above', below: '^=head1', above: '^=cut'}
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 4.00
+PHP:
+  id-by:
+    extension: [phpt, phps, phakefile, ctp, aw, php_cs.dist, php_cs, php3, php4, php5, php, phtml]
+    shebang: [php, php5]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 3.50
+Pig Latin:
+  id-by:
+    extension: [pig]
+  filters:
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL 
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+PL/I:
+  id-by:
+    extension: [pl1]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.38
+PL/M:
+  id-by:
+    extension: [plm, lit]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.13
+PlantUML:
+  id-by:
+    extension: [puml]
+  filters:
+  - {method: "remove-between", lhs: "/'", rhs: "'/" }
+  - {method: "remove", pattern: '^\s*\x27.*$', flags: "gm"}
+PO File:
+  id-by:
+    extension: [po]
+  filters:
+  - {method: "remove", pattern: "#[^,].*$", flags: "gm"}  # remove comments to EOL
+  scale-factor: 1.50
+PowerBuilder:
+  id-by:
+    extension: [pbt, sra, srf, srm, srs, sru, srw]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 3.33
+  line-continuation: '\\\\$'
+PowerShell:
+  id-by:
+    extension: [ps1, psd1, psm1]
+  filters:
+  - {method: "doc-to-c", language: "powershell"}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 3.00
+  line-continuation: '\\\\$'
+ProGuard:
+  id-by: ~
+  filters:
+  - {method: "remove", pattern: '#.*$', flags: "gm"} # comments to EOL
+Prolog:
+  id-by:
+    extension: [yap, prolog, P]
+    shebang: [swipl]
+  filters:
+  - {method: "remove", pattern: '\%.*$', flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: '\/\/.*$', flags: "gm"} # remove comments to EOL
+  scale-factor: 1.25
+Properties:
+  id-by:
+    extension: [properties]
+  filters:
+  - {method: "remove", pattern: '^\s*\!.*$', flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"}  # remove comments to EOL
+  scale-factor: 1.36
+Protocol Buffers:
+  id-by:
+    extension: [proto]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Pug:
+  id-by:
+    extension: [jade, pug]
+  filters:
+  - {method: "remove-indented-block", expression: '^(\s*)(//)\s*$', flags: "gm"}
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.00
+Puppet:
+  id-by: ~
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove", pattern: '^\s*#.*$', flags: "gm"}    
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+PureScript:
+  id-by:
+    extension: [purs]
+  filters:  
+  - {method: "remove", pattern: '--.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '{-', rhs: '-}' }
+  scale-factor: 2.00
+Python:
+  id-by:
+    extension: [xpy, wsgi, wscript, workspace, tac, snakefile, sconstruct, sconscript, pyt, pyp, pyi, pyde, py3, lmi, gypi, gyp, build.bazel, buck, gclient, py, pyw]
+    shebang: [python, python2.6, python2.7, python3, python3.3, python3.4, python3.5, python3.6, python3.7, python3.8]
+  filters:
+  - {method: "remove", pattern: '/\*'}
+  - {method: "remove", pattern: '\*/'}
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: "'''", rhs: "'''"}  # remove docstring
+  - {method: "remove-between", lhs: '"""', rhs: '"""'}  # remove docstring
+  scale-factor: 4.20
+  line-continuation: '\\\\$'
+QML:
+  id-by:
+    extension: [qbs, qml]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.25
+Qt:
+  id-by: ~
+  filter:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.00    
+Qt Linguist:
+  id-by: ~
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.00
+Qt Project:
+  id-by: ~
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 1.00
+  line-continuation: '\\\\$'
+R:
+  id-by:
+    extension: [rsx, rd, expr-dist, rprofile, R, r]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.00
+  line-continuation: '\\\\$'
+Racket:
+  id-by:
+    extension: [rktd, rkt, rktl, scrbl]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 1.50
+Raku:
+  id-by:
+    extension: [raku, rakumod, pm6]
+    shebang: [perl6, raku, rakudo]
+  filters:
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to EOL 
+  - {method: 'remove-lines-between', top: '=head1', bottom: '=cut', flags: "gm"}  #remove all lines inclusively
+  - {method: 'remove-lines-between', top: '=begin', bottom: '=end', flags: "gm"}  #where the first starts with top and a subsequent with the bottom toke 
+  scale-factor: 4.00
+RAML:
+  id-by:
+    extension: [raml]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 0.90
+RapydScript:
+  id-by:
+    extension: [pyj]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: "'''", rhs: "'''"}  # remove docstring
+  - {method: "remove-between", lhs: '"""', rhs: '"""'}  # remove docstring
+  scale-factor: 4.20
+Razor:
+  id-by:
+    extension: [cshtml, razor]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '@*', rhs: '*@' }
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.00
+ReScript:
+  id-by:
+    extension: [res, resi]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Rexx: 
+  id-by:
+    shebang: [rexx, regina]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.19
+ReasonML:
+  id-by:
+    extension: [re, rei]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['/*', '*/']}
+  - {method: "remove-between", lhs: '/*', rhs: '*/' }  
+  scale-factor: 2.50
+reStructuredText:
+  id-by:
+    extension: [rst.txt, rest.txt, rest, rst]
+  filters:
+  - {method: "remove-between-regex", lhs: '^\.\.', rhs: '^[^ \n\t\r\f\.]', flags: "gm"}
+  scale-factor: 1.50
+Ring:
+  id-by:
+    extension: [ring, rh, rform]
+  #debug-save: true
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 4.20
+Rmd:
+  id-by:
+    extension: [Rmd]
+  #debug-save: true
+  filters:
+  - {method: "replace", pattern: '^```\{\s*[a-zA-Z]', flags: "gm", with: "@CODE_BLOCK_START@"}
+  - {method: "replace", pattern: '^```', flags: "gm", with: "@CODE_BLOCK_END@"}
+  - {method: 'remove-outside-block', begin: '@CODE_BLOCK_START@', end: '@CODE_BLOCK_END@'}
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to eol 
+  scale-factor: 3.00
+  line-continuation: '\\\\$'
+RobotFramework:
+  id-by:
+    extension: [robot]
+  filters:
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove", pattern: '^\s*Comment .*$', flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: '^\s*\*{3}\s+(Variables|Test\s+Cases|Settings|Keywords)\s+\*{3}', flags: "gm" }
+  - {method: "remove", pattern: '^\s*\[(Documentation|Tags)\]', flags: "gm"}
+  scale-factor: 2.50
+Ruby:
+  id-by:
+    extension: [watchr, vagrantfile, thorfile, thor, snapfile, ru, rbx, rbw, rbuild, rabl, puppetfile, podfile, mspec, mavenfile, jbuilder, jarfile, guardfile, god, gemspec, gemfile.lock, gemfile, fastfile, eye, deliverfile, dangerfile, capfile, buildfile, builder, brewfile, berksfile, appraisals, pryrc, irbrc, rb, podspec, rake]
+    filename: [Rakefile, rakefile]
+    shebang: [ruby]
+  filters: 
+  - {method: "remove", pattern: '\#.*$', flags: "gm"}       # comments to EOL 
+  #- {method: 'remove-between', lhs: '=begin', rhs: '=end'}  # block comments
+  scale-factor: 4.20
+  line-continuation: '\\\\$'
+Ruby HTML:
+  id-by:
+    extension: [rhtml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 4.00
+Rust:
+  id-by:
+    extension: [rs.in, rs]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+SaltStack:
+  id-by: ~
+  filters:
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 200
+SAS:
+  id-by:
+    extension: [sas]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove-between", lhs: '*', rhs: ';' }
+  scale-factor: 1.95
+Sass:
+  id-by:
+    extension: [sass]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.5 
+Scala:
+  id-by:
+    extension: [sbt, kojo, scala]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 4.10
+Scheme:
+  id-by:
+    extension: [sps, sc, ss, scm, sch, sld]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 1.51
+SCSS:
+  id-by:
+    extension: [scss]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.5 
+sed:
+  id-by:
+    extension: [sed]
+    shebang: [sed]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 4.00
+  line-continuation: '\\\\$'
+SKILL++:
+  id-by:
+    extension: [ils]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+SKILL:
+  id-by:
+    extension: [il]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Slice:
+  id-by:
+    extension: [ice]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.50
+Slim:
+  id-by:
+    extension: [slim]
+  filters:
+  - {method: "remove-indented-block", expression: '^\s*[\/[^!]', flags: "gm"}
+  scale-factor: 3.00
+Smalltalk:
+  id-by:
+    extension: [st]
+  filters:
+  - {method: "remove-between", lhs: '"', rhs: '"'}  
+  scale-factor: 4.00
+Smarty:
+  id-by:
+    extension: [smarty, tpl]
+  filters:
+  - {method: "remove-between", lhs: '"""', rhs: '"""'}  # remove docstring
+  - {method: "remove-between", lhs: "'''", rhs: "'''"}  # remove docstring
+  - {method: "remove-between", lhs: '{*', rhs: '*}'}     
+  scale-factor: 3.50
+Softbridge Basic:
+  id-by:
+    extension: [sbl, SBL]
+  filters:
+  - {method: "remove-above", pattern: '^\s*Attribute\s+VB_Name\s+='}
+  - {method: "remove", pattern: '^\s*Attribute\s+'}
+  - {method: "remove-regex", pattern: "^\\s*\\47\\']# \\47 = "}
+  scale-factor: 2.76
+Solidity:
+  id-by:
+    extension: [sol]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}    # join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.48
+  line-continuation: '\\\\$'
+SparForte:
+  id-by:
+    extension: [sp]
+  filters:
+  - {method: "remove", pattern: '\#\!.*$', flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  scale-factor: 3.80
+Specman e:
+  id-by:
+    extension: [e]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: 'remove-above', pattern: '^<\x27', flags: "m"}  #remove before the first code block marker
+  - {method: "remove-lines-between", lhs: "'>", rhs: "<'"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  scale-factor: 2.00
+SQL:
+  id-by:
+    extension: [viw, udf, tab, mysql, cql, psql, sql, SQL]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 6.15
+SQL Data:
+  id-by:
+    extension: [data.sql]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+SQL Stored Procedure:
+  id-by:
+    extension: [sproc.sql, spoc.sql, spc.sql, udf.sql]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 6.15
+Squirrel:
+  id-by:
+    extension: [nut]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Standard ML:
+  id-by:
+    extension: [sig, fun, sml]
+  filters:
+  - {method: "remove-between", lhs: '(*', rhs: '*)'} 
+  scale-factor: 3.00
+Starlark:
+  id-by:
+    extension: [bzl]
+  filters:
+  - {method: "remove-between", lhs: "'''", rhs: "'''"}  # remove docstring
+  - {method: "remove-between", lhs: '"""', rhs: '"""'}  # remvoe docstring
+  - {method: "remove", pattern: '\#.*$', flags: "gm"}   # comments to EOL 
+  scale-factor: 4.20
+  line-continuation: '\\\\$'
+Stata:
+  id-by:
+    extension: [sthlp, matah, mata, ihlp, doh, ado, do, DO]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 3.00
+  line-continuation: '///$' 
+Stylus:
+  id-by:
+    extension: [styl]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.48
+  line-continuation: '\\\\$'
+SugarSS:
+  id-by:
+    extension: [sss]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Svelte:
+  id-by:
+    extension: [svelte]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 2.00
+SVG:
+  id-by:
+    extension: [svg, SVG]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.00
+SWIG:
+  id-by:
+    extension: [i]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Swift:
+  id-by:
+    extension: [swift] 
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+  line-continuation: '\\\\$'
+TITAN Project File Information:
+  id-by:
+    extension: [tpd]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Tcl/Tk:
+  id-by:
+    extension: [tcl, tk]
+    shebang: [tcl, tclsh, wish]
+  filters:
+  - {method: "remove", pattern: '\#\!', flags: ""}  #prevent shebang being counted as comment
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 4.00
+  line-continuation: '\\\\$'
+Teamcenter met:
+  id-by:
+    extension: [met]
+  filters:
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+Teamcenter def:
+  id-by: ~
+  filters: ~ 
+  scale-factor: 1.00
+Teamcenter mth:
+  id-by:
+    extension: [mth]
+  filters: ~
+  scale-factor: 1.00
+Thrift:
+  id-by:
+    extension: [thrift]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.50
+Titanium StyleSheet:
+  id-by:
+    extension: [tss]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '/[^/]', rhs: '[^/]/'}
+  scale-factor: 2.00
+TNSDL:
+  id-by:
+    extension: [sdl, ssc, sdt, spd, sst, rou, cin, cii, interface, in1, in2, in3, in4, inf]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+TOML:
+  id-by:
+    extension: [toml]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 2.76
+TTCN:
+  id-by:
+    extension: [ttcn, ttcn2, ttcn3, ttcnpp]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+  line-continuation: '\\\\$'
+Twig:
+  id-by:
+    extension: [twig]
+  filters:
+  - {method: "remove-between", lhs: '{#', rhs: '#}' }
+  scale-factor: 2.00
+TypeScript:
+  id-by:
+    extension: [tsx]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+  line-continuation: '\\\\$'
+TeX: 
+  id-by:
+    extension: [tex, mkvi, mkiv, mkii, ltx, lbx, ins, cbx, bib, bbx, aux, sty, dtx, bst]
+  filters:
+  - {method: "remove", pattern: '%.*$', flags: "gm"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.50
+Umka:
+  id-by:
+    extension: [um]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 2.00
+Unity-Prefab:
+  id-by:
+    extension: [mat, prefab]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL  
+  scale-factor: 2.50
+Vala:
+  id-by:
+    extension: [vala]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.50
+  line-continuation: '\\\\$'
+Vala Header:
+  id-by:
+    extension: [vapi]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.40
+  line-continuation: '\\\\$'
+Velocity Template Language:
+  id-by:
+    extension: [vm]
+  filters:
+  - {method: "decomment", language: "jsp"}
+  - {method: "remove", pattern: "##.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "add-newlines"}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  - {method: "remove-between", lhs: '#**', rhs: '*#' }
+  scale-factor: 1.00
+Verilog-SystemVerilog:
+  id-by:
+    extension: [sv, svh]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.51
+vim script:
+  id-by:
+    extension: [vim]
+  filters:
+  - {method: "remove", pattern: '".*$', flags: "gm"}
+VHDL:
+  id-by:
+    extension: [vhw, vht, vhs, vho, vhi, vhf, vhd, VHD, vhdl, VHDL]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 4.21
+VB for Applications:
+  id-by:
+    extension: [vba, VBA]
+  filters:
+  #TODO: I think these attributes are vb6 only. check.
+  - {method: 'remove-above', pattern: '^\s*Attribute\s+VB_Name\s+=', flags: "gm"}
+  - {method: "remove", pattern: '^\s*Attribute\s+', flags: "gm"}
+  - {method: "remove", pattern: '^\s*\47.*$', flags: "gm"}
+  scale-factor: 2.76
+Visual Basic.NET:
+  id-by:
+    extension: [vb, vbproj, VB]
+  filters:
+  - {method: 'remove-above', pattern: '^\s*Attribute\s+VB_Name\s+='}
+  - {method: "remove", pattern: '^\s*Attribute\s+'}
+  - {method: "remove", pattern: '^\s*\47'}
+  scale-factor: 2.76
+Visual Basic:
+  id-by:
+    extension: [bas, BAS, ctl, dsr, frm, frx, FRX, vbhtml, VBHTML, vbp, vbw]
+  filters:
+  - {method: 'remove-above', pattern: '^\s*Attribute\s+VB_Name\s+=', flags: "gm"}
+  - {method: "remove", pattern: '^\s*Attribute\s+.*$', flags: "gm"}
+  - {method: "remove", pattern: '^\s*\x27.*$', flags: "gm"}
+  scale-factor: 2.76
+Visual Basic Script:
+  id-by:
+    extension: [vbs, VBS]
+  filters:
+  - {method: 'remove-above', pattern: '^\s*Attribute\s+VB_Name\s+='}
+  - {method: "remove", pattern: '^\s*Attribute\s+'}
+  - {method: "remove", pattern: '^\s*\47'}
+  scale-factor: 2.76
+Visual FoxPro:
+  id-by:
+    extension: [SCA, sca]
+  filters:
+  - {method: "remove", pattern: '\*.*$', flags: "gm"}
+  - {method: "remove", pattern: '&&.*$', flags: "gm"}
+  scale-factor: 4.00
+Visual Studio Solution:
+  id-by:
+    extension: [sln]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  - {method: "remove", pattern: '^\s*\#.*$', flags: "gm" }
+  scale-factor: 1.00
+Visualforce Component:
+  id-by:
+    extension: [component]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.9 
+Visualforce Page:
+  id-by:
+    extension: [page]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.9 
+Vuejs Component:
+  id-by:
+    extension: [vue]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  scale-factor: 2.00
+WebAssembly:
+  id-by:
+    extension: [wast, wat]
+  filters:
+  - {method: "remove", pattern: ";;.*$", flags: "gm"}  # remove comments to EOL
+  scale-factor: 0.45
+Web Services Description:
+  id-by:
+    extension: [wsdl]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.00
+WiX include:
+  id-by:
+    extension: [wxi]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+WiX source:
+  id-by:
+    extension: [wxs]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+WiX string localization:
+  id-by:
+    extension: [wxl]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Windows Message File:
+  id-by:
+    extension: [mc]
+  filters:
+  - {method: "replace", pattern: '^\s*\;\s*\#pragma', with: "PRAGMA", flags: "gm"}
+  - {method: "remove", pattern: '^\s*;.*$', flags: "gm"}
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+Windows Module Definition:
+  id-by:
+    extension: [def]
+  filters:
+  - {method: "remove", pattern: '\^.*$', flags: "gm"} # comments to EOL
+  - {method: "remove", pattern: ';.*$', flags: "gm"}
+  scale-factor: 1.00
+Windows Resource File:
+  id-by:
+    extension: [rc, rc2]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+WXML:
+  id-by:
+    extension: [wxml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+WXSS:
+  id-by:
+    extension: [wxss]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '^\s*\/\/.*$', flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.00
+XAML:
+  id-by:
+    extension: [xaml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+xBase:
+  id-by:
+    extension: [prw, prg]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '\&\&*.*$', flags: "gm"}
+  - {method: "remove", pattern: 'note.*$', flags: "gmi"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: '\*.*$', flags: "gm"}
+  scale-factor: 2.00
+xBase Header:
+  id-by:
+    extension: [ch]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: '\&\&*.*$', flags: "gm"}
+  - {method: "remove", pattern: 'note.*$', flags: "gmi"}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  - {method: "remove", pattern: '\*.*$', flags: "gm"}
+  scale-factor: 2.00
+XHTML:
+  id-by:
+    extension: [xhtml]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+XMI:
+  id-by:
+    extension: [xmi, XMI]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+XML:
+  id-by:
+    extension: [zcml, xul, xspec, xproj, xml.dist, xliff, xlf, xib, xacro, x3d, wsf, web.release.config, web.debug.config, web.config, vxml, vstemplate, vssettings, vsixmanifest, vcxproj, ux, urdf, tmtheme, tmsnippet, tmpreferences, tmlanguage, tml, tmcommand, targets, sublime-snippet, sttheme, storyboard, srdf, shproj, sfproj, settings.stylecop, scxml, rss, resx, rdf, pt, psc1, ps1xml, props, proj, plist, pkgproj, packages.config, osm, odd, nuspec, nuget.config, nproj, ndproj, natvis, mjml, mdpolicy, launch, kml, jsproj, jelly, ivy, iml, grxml, gmx, fsproj, filters, dotsettings, dll.config, ditaval, ditamap, depproj, ct, csl, csdef, cscfg, cproject, clixml, ccxml, ccproj, builds, axml, app.config, ant, admx, adml, project, classpath, xml, XML]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+XQuery:
+  id-by:
+    extension: [xqy, xqm, xql, xq, xquery]
+  filters:
+  - {method: "remove-between", lhs: '(:', rhs: ':)' }
+  scale-factor: 2.50
+XSD:
+  id-by:
+    extension: [xsd, XSD]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+XSLT:
+  id-by:
+    extension: [xslt, XSLT, xsl, XSL]
+  filters:
+  - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  scale-factor: 1.90
+Xtend:
+  id-by:
+    extension: [xtend]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\\\$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove comments to EOL
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}  
+  scale-factor: 2.00
+yacc:
+  id-by:
+    extension: [yacc, y]
+  filters:
+  - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
+  - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
+  - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
+  - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.51
+YAML:
+  id-by:
+    extension: [yml.mysql, yaml-tmlanguage, syntax, sublime-syntax, rviz, reek, mir, glide.lock, gemrc, clang-tidy, clang-format, yaml, yml]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 0.90
+Zig:
+  id-by:
+    extension: [zig]
+  filters:
+  - {method: "remove", pattern: '//.*$', flags: "gm"}
+  scale-factor: 2.50
+zsh:
+  id-by:
+    extension: [zsh]
+    shebang: [zsh]
+  filters:
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  scale-factor: 3.81
+  line-continuation: '\\\\$'
+
