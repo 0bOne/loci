@@ -1,0 +1,50 @@
+Environment variable help
+-------------------------
+
+Managing switches through various DevOps pipelines can be cause issues, 
+particularly if items contain spaces nested quotes, escape characters and so on.
+This utility allows any switch to be specified as an environment variable.
+
+Also, you can mix environment variables and switches, and the following rules apply
+- if your switch is a list and includes the + prefix, it will ADD to the existing list, instead of overriding it.
+- The default is used first.  Use the switch --show:defaults to view the defaults
+- Any matching environment variables are applied, replacing or adding as applicable 
+- Any matching environment variable aliases are applied, replacing or adding as applicable
+- Any matching switches are applied are applied, replacing or adding as applicable
+
+Any switch can be used in an environment variable by replacing the '--' with LOCI_ENV_ to the switch
+This includes sources (which can be supplied positionally or with --sources:<list>)
+
+Because some switches are terse, self-documenting environment variable aliases exist. The original switch name or the alias can be used.
+(actually, both can be used, the alias is applied last and will override - or add to - the original;)
+
+Note that boolean switches need only be present to be considered 'true' 
+but environment variables must be explicitly set to 'true'. 
+An empty variable is treated as not present (false)
+
+Original            Alias (Readable notation)               Original (Terse)        Notes
+--xn:<list>         LOCI_ENV_EXCLUDE_FILENAMES              LOCI_ENV_xn 
+--xd:<list>         LOCI_ENV_EXCLUDE_DIRECTORIES            LOCI_ENV_xd
+--xx:<list>         LOCI_ENV_EXCLUDE_EXTENSIONS             LOCI_ENV_xx
+--i                 LOCI_ENV_EXCLUDE_IGNORE_CASE            LOCI_ENV_i              (set to 'true')
+--unique            LOCI_ENV_ONLY_UNIQUE_FILES              LOCI_ENV_unique         (set to 'true')
+--langs:<list>      LOCI_ENV_LANGUAGE_OVERRIDES             LOCI_ENV_langs
+--threads:<n>       LOCI_ENV_THREADS                        LOCI_ENV_threads
+--timeout:<n>       LOCI_ENV_THREAD_TIMEOUT_SEC             LOCI_ENV_timeout
+--format:<value>    LOCI_ENV_OUTPUT_FORMAT                  LOCI_ENV_format
+--verbosity:<value> LOCI_ENV_VERBOSITY                      LOCI_ENV_verbosity
+
+Also, because folder names can be long, multiple sources can be difficult to troubleshoot!
+To improve readability set an environment variable for each source separately
+This can be done by passing in variables in the range:
+    LOCI_ENV_SOURCE_01 to LOCI_ENV_SOURCE_99
+No more than 99 sources can be passed in this way, and the numbers need not be contiguous.
+All 99 environment variables are checked and added to the sources list
+These are always added and do not replace any other list, including command line switches.
+
+You can test whether your environment variables are being recognized, or their interaction with switches using the switch
+--show:options
+This displays effective execution options, after all switches, environment variables, and aliases have been applied.
+
+
+

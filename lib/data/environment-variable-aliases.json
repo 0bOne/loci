@@ -1,0 +1,28 @@
+{
+    "originals":
+    {
+        "LOCI_ENV_xn": "xn",
+        "LOCI_ENV_xd": "xd",
+        "LOCI_ENV_xx": "xx",
+        "LOCI_ENV_i": "i",        
+        "LOCI_ENV_unique": "unique",   
+        "LOCI_ENV_langs": "langs",
+        "LOCI_ENV_threads": "threads",
+        "LOCI_ENV_timeout": "timeout",
+        "LOCI_ENV_format": "format",
+        "LOCI_ENV_verbosity": "verbosity"
+    },
+    "friendlies":
+    {
+        "LOCI_ENV_EXCLUDE_FILENAMES": "xn",
+        "LOCI_ENV_EXCLUDE_DIRECTORIES": "xd",
+        "LOCI_ENV_EXCLUDE_EXTENSIONS": "xx",
+        "LOCI_ENV_EXCLUDE_IGNORE_CASE": "i",        
+        "LOCI_ENV_ONLY_UNIQUE_FILES": "unique",   
+        "LOCI_ENV_LANGUAGE_OVERRIDES": "langs",
+        "LOCI_ENV_THREADS": "threads",
+        "LOCI_ENV_THREAD_TIMEOUT_SEC": "timeout",
+        "LOCI_ENV_OUTPUT_FORMAT": "format",
+        "LOCI_ENV_VERBOSITY": "verbosity"
+    }
+}

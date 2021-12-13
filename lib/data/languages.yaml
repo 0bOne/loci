@@ -1364,8 +1364,8 @@ Perl:
     extension: [rexfile, psgi, ph, makefile.pl, cpanfile, al, ack, perl, plx, pm, plh]
     shebang: [perl5, perl, miniperl]
   filters:
-  - {method: 'remove_below', match: '^__(END|DATA)__'}
-  - {method: 'remove-below-above', below: '^=head1', above: '^=cut'}
+  #- {method: 'remove_below', match: '^__(END|DATA)__'}
+  #- {method: 'remove-below-above', below: '^=head1', above: '^=cut'}
   - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 4.00
 PHP:
@@ -1427,7 +1427,6 @@ PowerShell:
   id-by:
     extension: [ps1, psd1, psm1]
   filters:
-  - {method: "doc-to-c", language: "powershell"}
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   - {method: "remove-between", lhs: '/*', rhs: '*/'}

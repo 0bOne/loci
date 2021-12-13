@@ -1,0 +1,30 @@
+DONE: help
+DONE: logging
+DONE: LOC_ARG_xxxx environment variables
+
+better timing: per file, disambiguation, scanning, removing duplicates
+outputters should handle timings and options
+
+basic switches:
+    DONE: "unique": true,
+    DONE: "threads": 5,
+    DONE: "timeout": 72000,
+    DONE: "xx": [".bak"],
+    DONE: "xd": [".svn", ".cvs", ".hg", ".git", ".bzr", ".snapshot", ".config"],
+    DONE: "xn": [],
+    DONE: "verbosity": "silent"
+    DONE: "i": false,
+    DONE: "show" //options, ambig, special, langs
+    DONE: "langs": [], 
+    "output": "text",
+    output to file
+
+Additional languages:
+    terraform
+    angular
+    vue
+    react
+
+-NPM Package
+-CLI install
+

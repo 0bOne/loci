@@ -1,0 +1,51 @@
+Basic Usage:
+------------
+Loci [switches] path [, path...]
+    path: one or more paths (files or folders) to be included in the scan
+    switches: options related to scanning
+For more help on switches, use Loci --switch help
+
+Switches:
+---------
+Include or exclude files, folders, languages, or extensions
+(separate multiple values with semicolons)
+--xn:<list>     excludes files with matching names. May be just the name name.extension
+--xd:<list>     excludes files in folders with matching names
+--xx:<list>     excludes files with matching extensions. use period, eg (.js;.config.xml)
+                for any of the excludes, use the + symbol to indidate addition to the Defaults
+                otherwise any defaults (eg .git) will be overwritten (and no longer ignored)
+                example --xx:+myfolder1;myfolder2 
+--i             case insensitive match of any excludes
+--unique        only counts unique files.  Can take additional time.
+--langs:<list>  a list of extension/language mappings. separate multiple with semicolons.
+                if none supplied, list of supported languages will be displayed and execution will cease
+                supply in the format  ext=language;...
+                The language id must be available in the language definitions or an error will be thrown
+                (See --show:languages below to view the list of supported languages)
+
+Scanning Options:
+--options:<value>   requires path to options file in json format 
+                    These override the defaults 
+                    They can can be overridden by environment variables and switches
+--threads:<n>       Number of processing threads to use if more than 1000 files. Default is 4.
+                    When there are less than 1000 files, only one thread is used.
+--timeout:<n>       Number of seconds until threads timeout. Default is 20 minutes
+
+Output:
+--format:<format>  Format of output.
+                Only JSON and TEXT supported at present.
+                (XML, HTML, and others to follow)
+
+Logging:
+--verbosity=<level>     Information displayed while processing. One of silent, info, debug. Defaults to silent.
+                        Setting to 'debug' will cause the runtime options (aggregation of defaults, environment and switches) to be included in the output report
+
+Data Help:
+--show:defaults         Displays the default options JSON and exits 
+--show:options          Shows the current options JSON (defaults and switches merged) and exits.
+--show:languages        Shows the internal language definition YAML and exits.
+                        These are the filtering rules that decide on the lines of code, comment, and blanks.
+--show:disambiguation   Shows the internal language disambiguation definition YAML and exits.
+                        These are the weighting rules that determine the language when it cannot be determined by file name or shebang
+--show:environmentals   Show environment variable help and exits
+

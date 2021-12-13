@@ -1,0 +1,218 @@
+##this file was the original intent tos support a full range of features. It is being simplified
+##this file is not used anywhere in the code
+configuration:
+  config: 
+    short-help: use command line switches from a config file
+    long-help: |
+      if other switches are specified in the command line, they will overrite the contents of this file
+      specify without arguments to view the default configuration file
+      specify with . to shorthand to the default (loci.config.yaml)
+      if the file does not exist it will be created with the defaults
+  config-update:
+    short-help: use (and save) command line switches from a config file
+    long-help: |
+      same as config, but any additional command line switches will be applied to the file
+source-code: 
+  filter-language:
+    short-help: specify which languages should be included or excluded
+    long-help: |
+      Specify a language to include or exclude
+      Use without arguments to see list of languages.
+      If this switch is provided, the first argument must be I:* or X:*.
+      Separate multiples with semicolons.  Those with spaces should be enclosed in quotes.
+      Prefix with I: or X: to include or excludes. No prefix assumes I: (exclude)
+      Prefix any item with FROM: to read a list from a file.
+      In files, separate expressions with newlines, and quotes around items with spaces are optional
+  filter-content:
+    short-help: excludes files containing matches for these regular expressions.
+    long-help:  
+      regular expressions must be enclosed in / / delimiters
+      separate multiple with semicolons
+      specify one more more files instead by providing FILE:<path> arguments.
+      forward slash, spaces and semicolons in regular expressions must be escaped.
+      Files and regular expressions can be mixed together in the arguments.
+      A file can contain multiple expressions, 
+  skip-hidden:
+    short-help: skips hiddent files (on windows only). Ignored on NIX
+  stdin-language:
+    short-help: specify the language when the code is read from STDIN
+  filter-size:
+    short-help: filter by file size
+    verbose-help: |
+      sepcify a range of two numbers, separated by a colon.
+      skip one or the other to show unbounded in that direction.
+      Prefix with I: or X: to specify inclusion or exclusion.  Defaults to exclusion if omitted.
+      examples:
+          I: 30:40  - includes only files with sizes 30-40MiB. excludes all others
+          X: 30:40  - exlucdes files with sizes 30-40MiB, includes all others 
+          I: 30:    - includes all files larger than 30MiB, excludes those smaller.
+          X: :20    - excludes all files largeer than 20MiB, includes those smaller. 
+          10:20     - includess only files with sizes 10-20 MiB, excludes all others.
+processing:
+  force-language:
+    short-help: what language to use for a specific file.
+    long-help: |
+      Specify individually
+        Files as 'filename.', (trailing period)
+        Folders as foldername  (no period)
+        Extensions as '.ext'  (leading period)
+        A period by itself indicates 'no extension'
+        Shebangs as !#<endsWith> 
+        Regular expressions as /regexp/  escape semicolons and quotes
+        Separate multiple items with semicolons. Different types can be mixed
+        Items containing spaces should be quoted
+        Any mixture is allowed
+        Follow the clause with :<language name>
+      Specify in files:
+        include FROM:<filename> in above argument list, one or more times
+        One or more files containing the above expressions can be provided.
+        These files can contain the same mix of items.
+        Separation in files is with newlines instead of semicolons, and quotes are optional
+      Example:
+        force-language: FROM: language_assignments.txt; .cpp:C PlusPlus; .vb: Visual Basic
+  include-definitions:
+    short-help: include additional language definitions
+    long-help: |
+      Must be in the YAML format
+      Specify without arguments to see the existing list
+      Marged into existing definitions, overwriting any with the same name.
+      Prefix with NEW: to use instead of the existing definitions.
+  threads: 
+    short-help: number of threads to use for processing.
+    long-help: |
+      Any valid positive integer
+      Files will be allocated to threads in a round-robin manner
+      the thread with the lowest number of bytes to process get the 'next' file 
+      so that each thread has a very approximately similar of bytes to process   
+  encoding:
+    short-help: specify encoding
+    long-help: |
+      Determines the encoding of all files.
+      Allowed values are: 
+          auto      - detect from file. Default option if encoding not specified
+          utf8      - when auto is specified and the format is not recognized, this format is chosen
+          ucs2      - utf 16 big endian (approximately)
+          utf16le   - utf 16 little endian      
+data:
+  data-by:
+    short-help: granularity of data
+    long-help: |
+      include one more for of 'language', 'file', 'folder', 'ext'
+      separate with semicolons
+      defaults to 'language'
+  show-timing: 
+    short-help: display time information. defaults to true
+  show-sum:
+    short-help: displays summary of counts. defaults to true
+  as-percentages:
+    short-help: diplays percentages instead of counts. defaults to false
+logging:
+  log-scanned-to:
+    short-help: output all file names to this log file
+  log-ignored-to:
+    short-help: output ignored file names to this log file
+  log-ambiguous-to: 
+    short-help: output ambiguous file names to this log file
+  log-language-to:
+    short-help: output file names and matched languages to this file
+  log-stripped-to:
+    short-help: save stripped versions of processed files to this folder 
+    long-help:
+      for every filter in a langauge, a before and an after file to be saved
+      this will allow debugging of individual filter problems in language files
+output:
+  save-to:  
+    short-help: where to save the file
+    long-help: |
+      if specified, and if no format specified seprately, file format will be determined from the outut file extension
+      if no extension provided, defaults to json format (pretty printed)
+  output-format:
+    short-help: what format to save In
+    long-help: |
+      will override auto-detected format from save-to file extension
+      must be one of:
+        html, xml, yaml, csv, json, md, sql
+      defaults to json
+  output-transform:
+    short-help: specify an alternative transorm for the output format.
+    long-help: |
+      each output format has a different requirement for transform.
+      the replacement must be of the same type (xsl, json, etc)
+      specify a question mark ? to view the built-in for use as a template
+      format    built-in    override with  
+      html      html.xsl    xsl
+      xml       (none)      xsl 
+      csv       csv.yaml    yaml (specifying delimiters)
+      md        TBD         TBD 
+      sql       TBD         TBD
+      json      none        N/A
+progress:
+  progress: 
+    short-help: what progress is displayed in real-time.
+    long-help: 
+      zero or more of the following
+        time - shows elapsed time 
+        files - show file count
+        both - shows elapsed time and folders
+        none - no realtime progress 
+        defaults to both 
+  verbosity:
+    short-help:  stdout log level during processing.
+    long-help: | 
+      one of the following:
+        silent:  no information 
+        info: basic information
+        debug: all information 
+      defaults to silent      
+informational:
+  help:
+    short-help: display the short help for each option
+    long-help: | 
+      follow with the name of the switch for more information on that switch
+      follow with all for all information on all switches
+  version:
+    short-help: display the current version of this utility
+  show-os:
+    short-help: display the operating system information   
+
+
+
+#items not yet implemented
+  #unix related:
+  # follow_links: not_implemented_yet
+  # force_on_windows: not_implemented_yet       #only needed on unix
+  # force_on_unix: not_implemented_yet
+  # stat: not_implemented_yet
+
+  #archive related
+  # extract_with: not_implemented_yet #use this unzip algorthim if unable to determine (LOW PRIORITY)
+  # skip_archive: not_implemented_yet
+
+  #version control related 
+  # vcs: not_implemented_yet  #specify the version control systme from which to get files. Defaults to none (file system)
+  # git_diff_rel: not_implemented_yet
+  # git_diff_all: not_implemented_yet
+  # git_diff_simindex: not_implemented_yet
+
+  #diff related, low priority
+  # count_diff: not_implemented_yet
+  # diff: not_implemented_yet
+  # diff_alignment: not_implemented_yet
+  # diff_timeout: not_implemented_yet
+  # diff_list_file: not_implemented_yet # file containing pairs of filenames to be diffed
+  # count-and-diff:  not_implemented_yet  #count then diff two file sets
+  # ignore_whitespace: Ignore horizontal white space when comparing files with --diff.  See also --ignore-case.
+  # ignore_case: not_implemented_yet
+  # force_git: not_implemented_yet
+  # strip_str_comments: not_implemented_yet
+
+  #no plans to implement
+  # read_binary_files: not_implemented_yet  #will not be implemented
+  # write_lang_def_incl_dup: not_implemented_yet  #similar to write_lang_def with caveats, will not be used
+  # use_sloccount: not_implemented_yet
+  # docstring_as_code: not_implemented_yet
+  # summary_cutoff: not_implemented_yet
+  # skip_leading: not_implemented_yet
+  # no_autogen: not_implemented_yet         #skip auto-generated files
+  # autoconf:  not_implemented_yet              #Count .in files (as processed by GNU autoconf) of recognized languages.  See also --no-autogen.  
+  

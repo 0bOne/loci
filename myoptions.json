@@ -1,0 +1,25 @@
+{
+	"xd": [
+		".svn",
+		".cvs",
+		".hg",
+		".git",
+		".bzr",
+		".snapshot2",
+		".config",
+		".hidden"
+	],
+	"xn": [],
+	"xx": [
+		".bak"
+	],
+	"i": true,
+	"unique": true,
+	"threads": 8,
+	"timeout": 1200,
+	"langs": [],
+	"output": "text",
+	"verbosity": "silent",
+	"show": "options",
+	"sources": []
+}

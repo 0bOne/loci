@@ -3,28 +3,34 @@ const fs = require("fs");
 const path = require("path");
 const Loci = require("./lib/Loci");
 
-let testSingleFolder = process.argv[2];
+begin();
 
-//testSingleFolder = "XmlToJSONSendPipeline.btp";
-//testSingleFolder = "TypeScript_2.ts";
-
-if (testSingleFolder)
+function begin()
 {
-    processTest(testSingleFolder, 1); 
-    process.exit(1);
-}
 
-const samplesDir = path.resolve(__dirname, "tests", "samples");
-const contents = fs.readdirSync(samplesDir);
-let count = 1;
-for (const possibleFolder of contents)
-{
-    const spec = path.resolve(samplesDir, possibleFolder);
-    const stats = fs.lstatSync(spec);
-    if (stats.isDirectory())
+    let testSingleFolder = process.argv[2];
+
+    //testSingleFolder = "XmlToJSONSendPipeline.btp";
+    //testSingleFolder = "TypeScript_2.ts";
+
+    if (testSingleFolder)
     {
-        processTest(possibleFolder, count);
-        count++;
+        processTest(testSingleFolder, 1); 
+        process.exit(1);
+    }
+
+    const samplesDir = path.resolve(__dirname, "tests", "samples");
+    const contents = fs.readdirSync(samplesDir);
+    let count = 1;
+    for (const possibleFolder of contents)
+    {
+        const spec = path.resolve(samplesDir, possibleFolder);
+        const stats = fs.lstatSync(spec);
+        if (stats.isDirectory())
+        {
+            await processTest(possibleFolder, count);
+            count++;
+        }
     }
 }
 
@@ -38,13 +44,13 @@ function processTest(folderName, count)
     const startTime = new Date();
 
     const output = jc.Begin([inputFolder], {debugFolder: path.resolve(__dirname, "tests/debug")});
+    console.log(output);
 
     const endTime = new Date();
     const difference = endTime.getTime() - startTime.getTime();
     const seconds = Math.round(difference / 10) / 100;
     
     //console.log("time taken: " + seconds + " s");
-    console.log(output);
 
     const yamlFile = path.resolve(__dirname, "tests", "counts", folderName + ".yaml");
     let expectedCounts = loadYamlDoc(yamlFile);

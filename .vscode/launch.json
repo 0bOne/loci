@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "pwa-node",
             "request": "launch",
@@ -11,9 +12,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test-code-count.js",
+            "program": "${workspaceFolder}\\index.js",
             "cwd": "${workspaceFolder}",
-            "args": []
+            "args": ["--unique", "--verbosity:debug", "--langs:json=JavaScript", "c:\\_dev\\OLD_CODE\\_old\\bomps"]
         }
     ]
 }
