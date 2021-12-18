@@ -3,7 +3,6 @@ Basic Usage:
 Loci [switches] path [, path...]
     path: one or more paths (files or folders) to be included in the scan
     switches: options related to scanning
-For more help on switches, use Loci --switch help
 
 Switches:
 ---------
@@ -33,8 +32,13 @@ Scanning Options:
 
 Output:
 --format:<format>  Format of output.
-                Only JSON and TEXT supported at present.
-                (XML, HTML, and others to follow)
+    Supported values for <format>:
+        raw - raw JSON format as produced by the engine, unrounded times. Language counts are unsorted.
+        json - cleaned JSON format, with times rounded to 100ths of a second
+        text - console displayable text-based table, with dashes and tabs as cell borders
+        xml - cleaned, sorted XML, using attributes
+        html - cleaned, sorted HTML, using h2 and table tags
+    For all but RAW format, language counts are displayed in case-insentitive alphanumeric order
 
 Logging:
 --verbosity=<level>     Information displayed while processing. One of silent, info, debug. Defaults to silent.

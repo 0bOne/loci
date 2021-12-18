@@ -1,37 +1,11 @@
 ##this file was the original intent tos support a full range of features. It is being simplified
 ##this file is not used anywhere in the code
 configuration:
-  config: 
-    short-help: use command line switches from a config file
-    long-help: |
-      if other switches are specified in the command line, they will overrite the contents of this file
-      specify without arguments to view the default configuration file
-      specify with . to shorthand to the default (loci.config.yaml)
-      if the file does not exist it will be created with the defaults
   config-update:
     short-help: use (and save) command line switches from a config file
     long-help: |
       same as config, but any additional command line switches will be applied to the file
 source-code: 
-  filter-language:
-    short-help: specify which languages should be included or excluded
-    long-help: |
-      Specify a language to include or exclude
-      Use without arguments to see list of languages.
-      If this switch is provided, the first argument must be I:* or X:*.
-      Separate multiples with semicolons.  Those with spaces should be enclosed in quotes.
-      Prefix with I: or X: to include or excludes. No prefix assumes I: (exclude)
-      Prefix any item with FROM: to read a list from a file.
-      In files, separate expressions with newlines, and quotes around items with spaces are optional
-  filter-content:
-    short-help: excludes files containing matches for these regular expressions.
-    long-help:  
-      regular expressions must be enclosed in / / delimiters
-      separate multiple with semicolons
-      specify one more more files instead by providing FILE:<path> arguments.
-      forward slash, spaces and semicolons in regular expressions must be escaped.
-      Files and regular expressions can be mixed together in the arguments.
-      A file can contain multiple expressions, 
   skip-hidden:
     short-help: skips hiddent files (on windows only). Ignored on NIX
   stdin-language:
@@ -49,41 +23,13 @@ source-code:
           X: :20    - excludes all files largeer than 20MiB, includes those smaller. 
           10:20     - includess only files with sizes 10-20 MiB, excludes all others.
 processing:
-  force-language:
-    short-help: what language to use for a specific file.
-    long-help: |
-      Specify individually
-        Files as 'filename.', (trailing period)
-        Folders as foldername  (no period)
-        Extensions as '.ext'  (leading period)
-        A period by itself indicates 'no extension'
-        Shebangs as !#<endsWith> 
-        Regular expressions as /regexp/  escape semicolons and quotes
-        Separate multiple items with semicolons. Different types can be mixed
-        Items containing spaces should be quoted
-        Any mixture is allowed
-        Follow the clause with :<language name>
-      Specify in files:
-        include FROM:<filename> in above argument list, one or more times
-        One or more files containing the above expressions can be provided.
-        These files can contain the same mix of items.
-        Separation in files is with newlines instead of semicolons, and quotes are optional
-      Example:
-        force-language: FROM: language_assignments.txt; .cpp:C PlusPlus; .vb: Visual Basic
   include-definitions:
     short-help: include additional language definitions
     long-help: |
       Must be in the YAML format
       Specify without arguments to see the existing list
       Marged into existing definitions, overwriting any with the same name.
-      Prefix with NEW: to use instead of the existing definitions.
-  threads: 
-    short-help: number of threads to use for processing.
-    long-help: |
-      Any valid positive integer
-      Files will be allocated to threads in a round-robin manner
-      the thread with the lowest number of bytes to process get the 'next' file 
-      so that each thread has a very approximately similar of bytes to process   
+      Prefix with NEW: to use instead of the existing definitions.  
   encoding:
     short-help: specify encoding
     long-help: |

@@ -14,7 +14,7 @@
             ],
             "program": "${workspaceFolder}\\index.js",
             "cwd": "${workspaceFolder}",
-            "args": ["--unique", "--verbosity:debug", "--langs:json=JavaScript", "c:\\_dev\\OLD_CODE\\_old\\bomps"]
+            "args": ["--unique", ".", "--format:json"]
         }
     ]
 }

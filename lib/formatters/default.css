@@ -1,0 +1,5 @@
+html {font-family: sans-serif; font-size: 14px}
+table, th, td {border: 1px solid blue;}
+th {padding-left: 0.5em; padding-right: 0.5em}
+th, td {text-align: right} 
+tfoot td {font-weight: bold}
