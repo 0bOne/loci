@@ -1,7 +1,7 @@
 {
-    "xd": [".svn", ".cvs", ".hg", ".git", ".bzr", ".snapshot", ".config"],
+    "xd": [".svn", ".cvs", ".hg", ".git", ".bzr", ".snapshot", ".config", "node_modules", ".terraform", "bin", "obj", ".vscode"],
     "xn": [],
-    "xx": [".bak"],
+    "xx": [".bak", ".suo"],
     "i": false,
     "unique": false,
     "threads": 5,
@@ -11,5 +11,6 @@
     "verbosity": "silent",
     "show": "",
     "options": "",
+    "help": false,
     "sources": []
 }

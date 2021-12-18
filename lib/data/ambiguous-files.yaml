@@ -204,5 +204,4 @@ PHP/Pascal:
   - {method: "match", points: 001, for: "PHP", pattern: '\<\/script\>', flags: "mi"}
   - {method: "match", points: 100, for: "PHP", pattern: '<\%', flags: "m"}
   - {method: "match", points: 100, for: "PHP", pattern: '%\>', flags: "m"}
-
  

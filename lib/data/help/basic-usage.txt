@@ -1,6 +1,6 @@
 Basic Usage:
 ------------
-Loci [switches] path [, path...]
+loci [switches] path [, path...]
     path: one or more paths (files or folders) to be included in the scan
     switches: options related to scanning
 

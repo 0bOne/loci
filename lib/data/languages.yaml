@@ -1,4 +1,4 @@
-#non-ambiguous language definitions
+
 ABAP:
   id-by:
     extension: [abap]
@@ -838,7 +838,7 @@ Haxe:
   - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
-HCL:
+HashiCorp HCL: #aka terraform
   id-by:
     extension: [tfvars, hcl, tf, nomad]
   filters:

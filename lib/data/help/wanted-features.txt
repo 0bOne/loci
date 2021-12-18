@@ -7,10 +7,10 @@ configuration:
       same as config, but any additional command line switches will be applied to the file
 source-code: 
   skip-hidden:
-    short-help: skips hiddent files (on windows only). Ignored on NIX
+    short-help: skips hidden files (on windows only). Ignored on NIX
   stdin-language:
     short-help: specify the language when the code is read from STDIN
-  filter-size:
+  filter-size:  (xz)
     short-help: filter by file size
     verbose-help: |
       sepcify a range of two numbers, separated by a colon.

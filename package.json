@@ -1,11 +1,9 @@
 {
   "name": "loci",
   "version": "1.0.0",
-  "description": "modern code counter, inspired by cloc",
+  "description": "modern code counter",
   "main": "index.js",
   "scripts": {
-    "loci": "node index.js",
-    "test": "test.js",
     "cucumber": "cucumber-js --publish-quiet ./tests/features/*.feature"
   },
   "author": "0b1",
@@ -18,5 +16,8 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "*"
+  },
+  "bin": {  
+    "loci": "./bin/index.js"  
   }
 }
