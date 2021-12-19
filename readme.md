@@ -12,7 +12,7 @@
 
 
 ## History
-I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: I am always concerns that using another code counters are like comparinng apples to oranges.  They don't all work *quite* the same.
+I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: I am always concerned that using another code counters are like comparinng apples to oranges.  They don't all work *quite* the same.
 
 Unfortunately, many environments don't allow custom binaries, ruling out Perl scripts AND my personal go-to, cloc.exe.   
 
