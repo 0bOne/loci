@@ -14,17 +14,18 @@
 ## History
 I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: I am always concerned that using another code counters are like comparinng apples to oranges.  They don't all work *quite* the same.
 
-Unfortunately, many environments don't allow custom binaries, ruling out Perl scripts AND my personal go-to, cloc.exe.   
+Unfortunately many environments don't allow custom binaries, ruling out Perl scripts AND my personal go-to, cloc.exe.   
 
-Node, however, is ubiguitous, so I decided to see if I could create a close cousin of cloc written in node.
+Node, however, is more prevealent, so I decided to see if I could create a close cousin of cloc written in node.
 
 I think I succeeeded, but the Open Source community will be the ultimate judge of that!
 
-There is still a little apples-to-oranges between the two.  loci excludes folders bin, obj and .vscode by default, whereas cloc does not.  Cloc also has a very mature feature list that Loci does not: git repo querying, diffs, sql generation.  If you need those features, [Cloc](https://github.com/AlDanial/cloc) is by far your best choice.
+There is still a little "apples-to-oranges" between the two.  Loci excludes folders bin, obj and .vscode by default, whereas Cloc does not.  Cloc also has a very mature feature list that Loci does not: git repo querying, diffs, sql generation.  If you need those features, [Cloc](https://github.com/AlDanial/cloc) remains the better choice.
 
-Cloc is faster on smaller groups of files but only by fractions of a second.  For bulk scanning, Loci invokes worker threads so that counting can continue in parallel with file i/o.   
+Cloc is faster on smaller groups of files but only by fractions of a second.  For bulk scanning Loci invokes worker threads so that counting can continue without waiting for file i/o.   
 
-I think the big plus of loci is extensibility.  Definition files are stored as easily readable/editble YAML files, so new languages can be added quickly and easily.  And at ~7,500 LOC in 17 OO files to CLOC's 17,000 LOC in one script, its a little more maintainable, imo.
+In Cloc definitions are spreadh throughout the Perl functions, but in Loci definitions fare stored as YAML definition files. This means new languages can be added quickly and easily.  And at ~7,500 lines of SOLID code = data to CLOC's 17,000 lines in a single script, its a little more maintainable, imo.
+
 
 ## Performance
 
