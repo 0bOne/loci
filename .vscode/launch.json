@@ -12,9 +12,9 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\index.js",
+            "program": "${workspaceFolder}/bin/index.js",
             "cwd": "${workspaceFolder}",
-            "args": ["--unique", ".", "--format:json"]
+            "args": ["--unique", "C:\\_dev\\OLD_CODE\\uisdk", "--format:json", "--verbosity:thread"]
         }
     ]
 }

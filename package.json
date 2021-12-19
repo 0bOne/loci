@@ -1,5 +1,5 @@
 {
-  "name": "loci",
+  "name": "@0b1.org/loci",
   "version": "1.0.0",
   "description": "modern code counter",
   "main": "index.js",
