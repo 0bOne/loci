@@ -144,7 +144,7 @@ The license is MIT, so feel free to branch and experiment as you please.
 - The filter processing time exceeds the total processing time in multi-threaded mode :/
 
 ## Release Nodes
-### Version 1.0.2
+### Version 1.0.3
 - RTE scanning empty folder
 - Tested working on Node version 15.0.0 or higher
 - Added version check to generate error and exit on node versions below 15.0.0
