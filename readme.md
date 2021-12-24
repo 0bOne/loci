@@ -169,7 +169,6 @@ The current release can be considered an MVP/Beta, but as issues are resolved, a
 - Addition of a main LociApp to replace multiple imports with unnecessarily long paths.
 
 
-
 Finally, may the Source be with you...
-- 0b1
+0b1
 
