@@ -10,7 +10,6 @@
 - Override disambiguation for speed with command line switches
 - Multiple threads (automatically selects single-threaded mode for files counts below 1000)
 
-
 ## History
 I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: I am always concerns that using another code counters are like comparinng apples to oranges.  They don't all work *quite* the same.
 
@@ -138,13 +137,18 @@ The license is MIT, so feel free to branch and experiment as you please.
 
 - Tested on node v16.0.0
 
-
 ## Known Issues
 
 - Only tested on windows
-- RTE scanning empty folder
-- Cucumber tests all fail (due to return data changes rather than inaccurate results)
 - The filter processing time exceeds the total processing time in multi-threaded mode :/
+
+## Release Nodes
+### Version 1.0.2
+- RTE scanning empty folder
+- Tested working on Node version 15.0.0 or higher
+- Added version check to generate error and exit on node versions below 15.0.0
+- Ran ESLint and fixed errors
+- Cucumber tests all fail
 
 
 ## Roadmap

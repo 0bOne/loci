@@ -59,7 +59,7 @@ console.log("all tests passed!");
 
 function TestCommentsInStrings(content, quoteSequence, commentSequence, escapeSequence, expected)
 {
-    const returned = StringHelpers.MaskCommentsWithinStrings(content, quoteSequence, commentSequence, escapeSequence);
+    const returned = StringHelpers.MaskWithinStrings(content, quoteSequence, commentSequence, escapeSequence);
     if (returned !== expected)
     {
         console.error("Unexpected 'Comment-in-String' result:");
