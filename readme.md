@@ -35,7 +35,7 @@ We ran a few quick performance tests side-by-side with cloc, and came up with th
 |Loci	|	 0.24| 			2.4|	 37.9|
 |Cloc	|	 0.22| 			3.7|	197.2|
 
-![Comparison Chart](performance-chart.png)
+![Comparison Chart](https://github.com/0bOne/loci/blob/main/performance-chart.png)
 
 
 ## Command-Line Usage
@@ -141,34 +141,37 @@ The license is MIT, so feel free to branch and experiment as you please.
 ## Known Issues
 
 - Only tested on windows
-- The filter processing time exceeds the total processing time in multi-threaded mode :/
+- Only runs in single-threaded mode on Node versions lower than 15.0.0. No intent to fix.
+- Cucumber test fails (for Robot language only) in node 14.0.0 (passes in higher versions)
+- Node 14.0.0 defaults to single threaded mode
 
-## Release Nodes
+## Release Notes
+
+### Version 1.0.4
+- Fixed: works with Node 14.0.0 
+- Fixed: The filter processing time exceeds the total processing time in multi-threaded mode
+- String tests migrated to Cucumber
+
 ### Version 1.0.3
-- RTE scanning empty folder
+- Fixed: RTE scanning empty folder
+- Fixed: Cucumber tests all fail
+- Fixed: Verious ESLint styling issues
 - Tested working on Node version 15.0.0 or higher
 - Added version check to generate error and exit on node versions below 15.0.0
-- Ran ESLint and fixed errors
-- Cucumber tests all fail
-
 
 ## Roadmap
 
-The current release can be considered an MVP/Beta, but as issues are resolved, a full suite of features is intended:
 - A --save-to: switch so that outputs don't need to be redirect to file. 
-- A more robust scan for the 'comments in strings'/'strings in comments' circular conundrum, which can't be reliably solved with regular expressions.
+- A more robust "Raster" scan for the 'comments in strings'/'strings in comments' circular conundrum, which can't be reliably solved with regular expressions.
 - Implementation of diambiguation for extensions adso, d, v and a few other rarely used.
 - Output as SQL inserts
 - Use .gitignore to filter out files and folders
 - Scan git repos
 - Custom XSLT, JSON Transforms, and/or CSS for results formatting
 - Custom definitions for disambiguation and languages
-- Output files (scanned, unique, ignored, etc) to individual lists
+- Output lists (scanned, unique, ignored, etc) to individual lists
 - Scan inside archives
 - Additional languages (on request)
-- Addition of a main LociApp to replace multiple imports with unnecessarily long paths.
-
 
 Finally, may the Source be with you...
 0b1
-

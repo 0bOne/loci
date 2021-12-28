@@ -1,12 +1,12 @@
 {
   "name": "@0b1.org/loci",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "modern code counter",
   "keywords": ["count", "inventory", "cloc", "loci", "sloc", "nloc", "inventory", "devops"],
   "homepage": "https://github.com/0bOne/loci",
   "main": "index.js",
   "scripts": {
-    "cucumber": "cucumber-js --publish-quiet ./tests/features/*.feature"
+    "cucumber": "cucumber-js --publish-quiet ./tests/features/CountCode.feature"
   },
   "author": "0b1",
   "license": "MIT",
