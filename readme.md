@@ -134,7 +134,7 @@ The license is MIT, so feel free to branch and experiment as you please.
 
 ## Known Issues
 
-- Only tested on windows
+- Only tested on windows and Linux
 - Only runs in single-threaded mode on Node versions lower than 15.0.0. No intent to fix.
 - Cucumber test fails (for Robot language only) in node 14.0.0 (passes in higher versions)
 - Node 14.0.0 runs in single threaded mode only
@@ -150,6 +150,7 @@ The license is MIT, so feel free to branch and experiment as you please.
 - Fixed: works with Node 14.0.0 
 - Fixed: The filter processing time exceeds the total processing time in multi-threaded mode
 - String tests migrated to Cucumber
+- Tested on Ubuntu Server 20.04.03 LTS running Node 16.13.1
 
 ### Version 1.0.3
 - Fixed: RTE scanning empty folder
