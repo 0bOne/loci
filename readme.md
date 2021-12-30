@@ -11,32 +11,26 @@
 - Multiple threads (automatically selects single-threaded mode for files counts below 1000)
 
 ## History
-I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: I am always concerned that using another code counters are like comparinng apples to oranges.  They don't all work *quite* the same.
+I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: Any other code counter and I would be "comparing apples to oranges" - they don't all give the same results.
 
-Unfortunately many environments don't allow custom binaries, ruling out Perl scripts AND my personal go-to, cloc.exe.   
+Unfortunately many environments don't allow custom binaries, ruling out cloc as a Perl script AND cloc.exe.   
 
-Node, however, is more prevealent, so I decided to see if I could create a close cousin of cloc written in node.
+Node, however, is more prevalent, so I decided to see if I could create a close cousin of cloc written in node.
 
-I think I succeeeded, but the Open Source community will be the ultimate judge of that!
+I think I succeeeded, but the Open Source community will be the ultimate judge.
 
-There is still a little "apples-to-oranges" between the two.  Loci excludes folders bin, obj and .vscode by default, whereas Cloc does not.  Cloc also has a very mature feature list that Loci does not: git repo querying, diffs, sql generation.  If you need those features, [Cloc](https://github.com/AlDanial/cloc) remains the better choice.
+There is still a few minor differences between the two.  Loci excludes the folders bin, obj and .vscode by default, whereas Cloc does not.  Cloc also has a very mature feature list that Loci does not: git repo querying, diffs, sql generation.  If you need those features, [Cloc](https://github.com/AlDanial/cloc) remains the better choice.
 
 Cloc is faster on smaller groups of files but only by fractions of a second.  For bulk scanning Loci invokes worker threads so that counting can continue without waiting for file i/o.   
 
-In Cloc definitions are spreadh throughout the Perl functions, but in Loci definitions fare stored as YAML definition files. This means new languages can be added quickly and easily.  And at ~7,500 lines of SOLID code = data to CLOC's 17,000 lines in a single script, its a little more maintainable, imo.
+In Cloc definitions are spread throughout the Perl functions, but in Loci definitions fare stored as YAML definition files. This means new languages can be added quickly and easily.  And at ~7,500 lines of SOLID code = data to CLOC's 17,000 lines in a single script, its a little more maintainable, imo.
 
 
 ## Performance
 
-We ran a few quick performance tests side-by-side with cloc, and came up with the following (encouraging) results:
-
-|# Lines|	7,500|		340,000|	 5.5M|	
-|:------|-------:|------------:|--------:|
-|Loci	|	 0.24| 			2.4|	 37.9|
-|Cloc	|	 0.22| 			3.7|	197.2|
+Performance comparisons show Loci outperforming Cloc at almost all code sizes
 
 ![Comparison Chart](https://github.com/0bOne/loci/blob/main/performance-chart.png)
-
 
 ## Command-Line Usage
 
@@ -143,10 +137,15 @@ The license is MIT, so feel free to branch and experiment as you please.
 - Only tested on windows
 - Only runs in single-threaded mode on Node versions lower than 15.0.0. No intent to fix.
 - Cucumber test fails (for Robot language only) in node 14.0.0 (passes in higher versions)
-- Node 14.0.0 defaults to single threaded mode
+- Node 14.0.0 runs in single threaded mode only
 
 ## Release Notes
 
+### Version 1.0.5
+- Addex experimental Raster scan for JavaScript only (approx 10-20% performance gain over RegEx)
+- Refactored File Processing & regognition for readability and performance gain
+- Refactored Unique file determination algorithm for significant performance gains (>75%)
+- Added more granular benchmark graph to readme.
 ### Version 1.0.4
 - Fixed: works with Node 14.0.0 
 - Fixed: The filter processing time exceeds the total processing time in multi-threaded mode
@@ -161,17 +160,19 @@ The license is MIT, so feel free to branch and experiment as you please.
 
 ## Roadmap
 
+- Raster scan support for all languages (ongoing effort)
 - A --save-to: switch so that outputs don't need to be redirect to file. 
-- A more robust "Raster" scan for the 'comments in strings'/'strings in comments' circular conundrum, which can't be reliably solved with regular expressions.
 - Implementation of diambiguation for extensions adso, d, v and a few other rarely used.
-- Output as SQL inserts
+- Output to CSV
+- Custom XSLT, JSON Transforms, and/or HTML CSS for results formatting
+- Scan remote git repos
 - Use .gitignore to filter out files and folders
-- Scan git repos
-- Custom XSLT, JSON Transforms, and/or CSS for results formatting
 - Custom definitions for disambiguation and languages
 - Output lists (scanned, unique, ignored, etc) to individual lists
+- Output as SQL inserts
 - Scan inside archives
 - Additional languages (on request)
+- Scale Factor option
 
 Finally, may the Source be with you...
 0b1

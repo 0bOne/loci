@@ -12,5 +12,6 @@
     "show": "",
     "options": "",
     "help": false,
+    "raster": false,
     "sources": []
 }

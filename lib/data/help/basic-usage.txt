@@ -29,6 +29,7 @@ Scanning Options:
 --threads:<n>       Number of processing threads to use if more than 1000 files. Default is 4.
                     When there are less than 1000 files, only one thread is used.
 --timeout:<n>       Number of seconds until threads timeout. Default is 20 minutes
+--raster            Invokes experimental raster scan on languages with support for it (at this time only JavaScript)
 
 Output:
 --format:<format>  Format of output.

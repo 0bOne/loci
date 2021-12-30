@@ -1,4 +1,3 @@
-
 ABAP:
   id-by:
     extension: [abap]
@@ -940,6 +939,13 @@ Java:
 JavaScript:
   id-by:
     extension: [xsjslib, xsjs, ssjs, sjs, pac, njs, mjs, jss, jsm, jsfl, jscad, jsb, jakefile, jake, bones, _js, js, es6]
+  raster:
+  - {type: "escape", sequence: "\\"}
+  - {type: "string", start: "'", end: "'"}
+  - {type: "string", start: '"', end: '"'}
+  - {type: "string", start: '`', end: '`'}
+  - {type: "comment", start: '//', end: 'EOL'}
+  - {type: "comment", start: '/*', end: '*/'}
   filters:
   - {method: "mask-in-strings", quotes: ['"', '"'], targets: ['//', '/*', '*/']}
   - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
@@ -1180,10 +1186,8 @@ Maven:
   scale-factor: 1.90
 Meson:
   id-by:
-    extension: [meson.build]
     filename: [meson.build]
-  filters:
- 
+  filters: 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 1.00
   line-continuation: '\\\\$'

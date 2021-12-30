@@ -1,22 +1,22 @@
-ADSO/IDSM:
-  id-by:
-    extension: [adso]
-Ant/XML:
-  id-by:
-    filename: [build.xml]
-    rules-todo: Ant or XML
-D/dtrace:
-  id-by:
-    extension: [d]
-    rules-todo: d or dtrace
-Maven/XML:
-  id-by:
-    filename: [pom.xml]
-    rules-todo: Maven or XML
-Verilog-SystemVerilog/Coq:
-  id-by:
-    extension: [v]
-    rules-todo: Verilog or Coq
+# ADSO/IDSM:
+#   id-by:
+#     extension: [adso]
+# Ant/XML:
+#   id-by:
+#     filename: [build.xml]
+#     rules-todo: Ant or XML
+# D/dtrace:
+#   id-by:
+#     extension: [d]
+#     rules-todo: d or dtrace
+# Maven/XML:
+#   id-by:
+#     filename: [pom.xml]
+#     rules-todo: Maven or XML
+# Verilog-SystemVerilog/Coq:
+#   id-by:
+#     extension: [v]
+#     rules-todo: Verilog or Coq
 TypeScript/Qt Linguist:
   id-by:
     extension: [ts]
