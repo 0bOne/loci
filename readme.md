@@ -3,12 +3,17 @@
 ## Key Features
 - Command Line Mode or NPM Library
 - Command Line can take environment variables or switches
-- Multiple output formats: Text, JSON, XML, HTML
+- Multiple output formats: Text, JSON, XML, HTML, CSV
 - Over 200 languages supported
 - Modern stacks like Node, Angular, Vue, C#, Terraform
-- Automatic disambiguation where file extension could belong to more than one language
+- Automatic disambiguation where file could be more than one language
 - Override disambiguation for speed with command line switches
-- Multiple threads (automatically selects single-threaded mode for files counts below 1000)
+- Multiple threads and automatic single/multi-thread detetion based on file count
+- Faster than Cloc in most scenarios
+
+## NPM Location
+
+https://www.npmjs.com/package/@0b1.org/loci
 
 ## History
 I have been a huge fan of [Cloc](https://github.com/AlDanial/cloc) for many years.  In fact, I have used it so often on new projects that other code counters just don't give me the confidence: Any other code counter and I would be "comparing apples to oranges" - they don't all give the same results.
