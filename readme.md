@@ -60,6 +60,12 @@ Basic scanning:
 Separated lists in switches with semicolons. Separate lists of folders to scan with spaces.
 (if your folder names have spaces, wrap them in double quotes)
 
+Link to full help:
+https://github.com/0bOne/loci/blob/main/lib/data/help/basic-usage.txt
+
+Environment Variable information:
+https://github.com/0bOne/loci/blob/main/lib/data/help/environmentals.txt
+
 
 ## Library Usage
 
@@ -73,33 +79,31 @@ const Loci = require ("@0b1.org/loci/lib/Loci");
 Loci.CLIScan();
 ```
 
-And you can run your own file as though it were loci:
+And you can run your own code as though it were Loci:
 
 ```node index.js --unique .```
 
-This, of course, is not much use, a more complete program would look like this:
+This, of course, is not much use. A more complete program would look like this:
 
 ```
-
-    const OptionsLoader = require ("@0b1.org/loci/lib/OptionsLoader");
     const Loci = require ("@0b1.org/loci/lib/Loci");
-    const Logger = require ("@0b1.org/loci/lib/Logger");
 
-    const options = OptionsLoader.LoadDefaults();
-    options.xf.push("not_this_folder");
-    options.threads = 10;
+    const options = Loci.LoadDefaultOptions();
+    options.sources.push("scan_this_folder);
+    options.xf.push("not_this_subfolder");
+    options.threads = 5;
 
     //the default logger logs to the console. 
     //Or pass in your own logger implementing the same methods
-    const logger = new Logger(options, 0);
+    const logger = Loci.GetLogger(options);
         
     //instantiate and scan
-    const loci = new Loci(logger);      
-    const output = loci.Begin(options);
+    const scanner = new Loci(logger);      
+    const output = scanner.Scan(options);
         
     //format and display the output. 
     //Alternatively, process the json object elsewhere in your project.
-    const formatter = new OutputFormatter(options);
+    const formatter = Loci.GetFormatter(options);
     const textResult = formatter.Format(output);
     console.log(textResult);
 ```
@@ -141,11 +145,22 @@ The license is MIT, so feel free to branch and experiment as you please.
 
 ## Release Notes
 
+### Version 1.0.6
+- Added static methods to Loci to get logger, formatter, and default options, so that only Loci module need be imported
+- Added --tf switch to control single/multi threaded mode file count cut-off point.
+- Defaulted -tf switch to 3500 based on 1.0.5 benchmark tests for likely best performance.
+- Remvove several obsolete files from source
+- Changed Loci instance scan method from 'Begin' to 'Scan' for improved readability
+- Added disambiguate by Shebang scoring rule
+- Added disambiguation rules for Ant/XML, Maven/XML, Verilog-SystemVerilog/Coq, and D/dtrace
+- Added CSV output format
+
 ### Version 1.0.5
 - Addex experimental Raster scan for JavaScript only (approx 10-20% performance gain over RegEx)
 - Refactored File Processing & regognition for readability and performance gain
 - Refactored Unique file determination algorithm for significant performance gains (>75%)
 - Added more granular benchmark graph to readme.
+
 ### Version 1.0.4
 - Fixed: works with Node 14.0.0 
 - Fixed: The filter processing time exceeds the total processing time in multi-threaded mode
@@ -162,17 +177,16 @@ The license is MIT, so feel free to branch and experiment as you please.
 ## Roadmap
 
 - Raster scan support for all languages (ongoing effort)
-- A --save-to: switch so that outputs don't need to be redirect to file. 
-- Implementation of diambiguation for extensions adso, d, v and a few other rarely used.
-- Output to CSV
+- A --otf: (output to file) switch
+- Suppress outputs (times, files, counts, sum)
 - Custom XSLT, JSON Transforms, and/or HTML CSS for results formatting
-- Scan remote git repos
 - Use .gitignore to filter out files and folders
 - Custom definitions for disambiguation and languages
 - Output lists (scanned, unique, ignored, etc) to individual lists
 - Output as SQL inserts
 - Scan inside archives
 - Additional languages (on request)
+- Scan remote git repos
 - Scale Factor option
 
 Finally, may the Source be with you...

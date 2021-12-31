@@ -30,6 +30,7 @@ Original            Alias (Readable notation)               Original (Terse)    
 --unique            LOCI_ENV_ONLY_UNIQUE_FILES              LOCI_ENV_unique         (set to 'true')
 --langs:<list>      LOCI_ENV_LANGUAGE_OVERRIDES             LOCI_ENV_langs
 --threads:<n>       LOCI_ENV_THREADS                        LOCI_ENV_threads
+--tf                LOCI_ENV_THREAD_FILES                   LOCI_ENV_tf
 --timeout:<n>       LOCI_ENV_THREAD_TIMEOUT_SEC             LOCI_ENV_timeout
 --format:<value>    LOCI_ENV_OUTPUT_FORMAT                  LOCI_ENV_format
 --verbosity:<value> LOCI_ENV_VERBOSITY                      LOCI_ENV_verbosity

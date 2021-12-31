@@ -1,8 +1,17 @@
 {
   "name": "@0b1.org/loci",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "modern code counter",
-  "keywords": ["count", "inventory", "cloc", "loci", "sloc", "nloc", "inventory", "devops"],
+  "keywords": [
+    "count",
+    "inventory",
+    "cloc",
+    "loci",
+    "sloc",
+    "nloc",
+    "inventory",
+    "devops"
+  ],
   "homepage": "https://github.com/0bOne/loci",
   "main": "index.js",
   "scripts": {
@@ -21,5 +30,9 @@
   },
   "bin": {
     "loci": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0bOne/loci.git"
   }
 }

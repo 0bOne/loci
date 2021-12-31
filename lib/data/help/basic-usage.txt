@@ -27,7 +27,8 @@ Scanning Options:
                     These override the defaults 
                     They can can be overridden by environment variables and switches
 --threads:<n>       Number of processing threads to use if more than 1000 files. Default is 4.
-                    When there are less than 1000 files, only one thread is used.
+                    When there are less than 3500 files (see below) only one thread is used.
+--tf:<n>            Minimum nummber of files required to invoke multi threaded mode. Defaults to 3500                    
 --timeout:<n>       Number of seconds until threads timeout. Default is 20 minutes
 --raster            Invokes experimental raster scan on languages with support for it (at this time only JavaScript)
 
@@ -39,11 +40,13 @@ Output:
         text - console displayable text-based table, with dashes and tabs as cell borders
         xml - cleaned, sorted XML, using attributes
         html - cleaned, sorted HTML, using h2 and table tags
+        csv - comma saparated values
     For all but RAW format, language counts are displayed in case-insentitive alphanumeric order
 
 Logging:
---verbosity=<level>     Information displayed while processing. One of silent, info, debug. Defaults to silent.
+--verbosity=<level>     Information displayed while processing. One of silent, info, debug, thread. Defaults to silent.
                         Setting to 'debug' will cause the runtime options (aggregation of defaults, environment and switches) to be included in the output report
+                        Setting to 'thread' shows only thread-related information
 
 Data Help:
 --show:defaults         Displays the default options JSON and exits 

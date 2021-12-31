@@ -1,0 +1,10 @@
+{
+	"path": "./tests/c#-assembly/",
+    "overview": {"total": 1, "unique": 1, "unrecognized": 0, "lines": 17},
+    "table": 
+    [
+        {"language": "C#", "files": 1, "blank": 4, "comment": 9, "code": 9}
+    ]
+    "total": {"files": 1, "blank": 4, "comment": 4, "code": 9}
+}
+

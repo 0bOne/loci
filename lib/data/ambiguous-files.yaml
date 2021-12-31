@@ -1,30 +1,12 @@
-# ADSO/IDSM:
-#   id-by:
-#     extension: [adso]
-# Ant/XML:
-#   id-by:
-#     filename: [build.xml]
-#     rules-todo: Ant or XML
-# D/dtrace:
-#   id-by:
-#     extension: [d]
-#     rules-todo: d or dtrace
-# Maven/XML:
-#   id-by:
-#     filename: [pom.xml]
-#     rules-todo: Maven or XML
-# Verilog-SystemVerilog/Coq:
-#   id-by:
-#     extension: [v]
-#     rules-todo: Verilog or Coq
-TypeScript/Qt Linguist:
+Ant/XML:
   id-by:
-    extension: [ts]
+     filename: [build.xml]
   scoring-rules:
-  - {method: "match", points: 100, for: "Qt Linguist", pattern: '\b</?(message|source|translation)>', flags: "m"}
-  - {method: "match", points: 1, for: "TypeScript", pattern: '^\s*(var|const|let|class|document)\b', flags: "m"}
-  - {method: "match", points: 1, for: "TypeScript", pattern: '[;}]\s*$', flags: "m"}
-  - {method: "match", points: 1, for: "TypeScript", pattern: '^\s*', flags: "m"}
+  - {method: "bias", points: 1.1, for: "XML"}
+  - {method: "match", points: 1, for: "Ant", pattern: '^\s*<project\s+', flags: "mi"}
+  - {method: "match", points: 1, for: "Ant", pattern: 'xmlns:artifact="antlib:org.apache.maven.artifact.ant"', flags: "mi"}
+  - {method: "match", points: -1, for: "XML", pattern: '^\s*<project\s+', flags: "mi"}
+  - {method: "match", points: -1, for: "XML", pattern: 'xmlns:artifact="antlib:org.apache.maven.artifact.ant"', flags: "mi"}
 C#/Smalltalk:
   id-by:
     extension: [cs]
@@ -36,6 +18,25 @@ C#/Smalltalk:
   - {method: "match", points: 19, for: "C#", pattern: '^\s*(public|private|new)\s', flags: "m"}
   - {method: "match", points: 1, for: "Smalltalk", pattern: '(\!|\]\.)\s*$', flags: "m"}
   - {method: "match", points: -1, for: "C#", pattern: '(\!|\]\.)\s*$', flags: "m"}
+D/dtrace:
+  id-by:
+     extension: [d]
+  scoring-rules:
+  - {method: "bias", points: 1.1, for: "D"}
+  - {method: "shebang", points: 1, for: "dtrace", value: "dtrace"}
+F#/Forth:
+  id-by:
+    extension: [fs]
+    heuristic: Forth_or_Fsharp
+  scoring-rules:
+  - {method: "match", points: 2, for: "Forth", pattern: '^:\s', flags: "m"}
+  - {method: "match", points: 2, for: "F#", pattern: '^\s*(#light|import|let|module|namespace|open|type)', flags: "m"}
+Fortran 77/Forth:
+  id-by:
+    extension: [f, for]
+  scoring-rules:
+  - {method: "match", points: 2, for: "Forth", pattern: '^:\s', flags: "m"}
+  - {method: "match", points: 2, for: "Fortran 77", pattern: '^([c*][^a-z]|\s{6,}(subroutine|program|end|implicit)\s|\s*!)', flags: "mi"}
 IDL/QtProject/Prolog/ProGuard:
   id-by:
     extension: [pro]
@@ -49,44 +50,6 @@ IDL/QtProject/Prolog/ProGuard:
   - {method: "match", points: 1, for: "ProGuard", pattern: '^\s*#', flags: "m"}
   - {method: "match", points: 1, for: "ProGuard", pattern: '^-keep', flags: "m"}
   - {method: "match", points: 1, for: "ProGuard", pattern: "^-(dont)?obfuscate", flags: "m"}
-Scheme/SaltStack:
-  id-by:
-    extension: [sls]
-  scoring-rules:
-  - {method: "match", points: 4, for: "SaltStack", pattern: '{\%.*%}*', flags: "m"}
-  - {method: "match", points: 4, for: "SaltStack", pattern: '(/map\.jinja\b/)', flags: "m"}
-  - {method: "match", points: 1, for: "Scheme", pattern: '\((define|lambda|let|cond|do)\s', flags: "m"}
-Fortran 77/Forth:
-  id-by:
-    extension: [f, for]
-  scoring-rules:
-  - {method: "match", points: 2, for: "Forth", pattern: '^:\s', flags: "m"}
-  - {method: "match", points: 2, for: "Fortran 77", pattern: '^([c*][^a-z]|\s{6,}(subroutine|program|end|implicit)\s|\s*!)', flags: "mi"}
-F#/Forth:
-  id-by:
-    extension: [fs]
-    heuristic: Forth_or_Fsharp
-  scoring-rules:
-  - {method: "match", points: 2, for: "Forth", pattern: '^:\s', flags: "m"}
-  - {method: "match", points: 2, for: "F#", pattern: '^\s*(#light|import|let|module|namespace|open|type)', flags: "m"}
-Qt/Glade:
-  id-by:
-    extension: [ui]
-    heuristic: Qt_or_Glade
-  scoring-rules:
-  - {method: "bias", points: 5, for: "Qt"}
-  - {method: "match", points: 10, for: "Glade", pattern: 'generated\s+with\s+glade', flags: "mi"}
-Visual Basic/TeX/Apex Class:
-  id-by:
-    extension: [cls]
-  scoring-rules:
-  - {method: "match", points: 1, for: "TeX", pattern: '\s*%', flags: "m"}
-  - {method: "match", points: 1, for: "TeX", pattern: '\s*\\', flags: "m"}
-  - {method: "match", points: 1, for: "Visual Basic", pattern: '^\s*(public|private)\s', flags: "mi"}
-  - {method: "match", points: 1, for: "Apex Class", pattern: '^\s*(public|private)\s', flags: "mi"}
-  - {method: "match", points: 1, for: "Visual Basic", pattern: '^\s*(end|attribute|version)\s', flags: "mi"}
-  - {method: "match", points: 1, for: "Apex Class", pattern: '[{}]', flags: "m"}
-  - {method: "match", points: 1, for: "Apex Class", pattern: ';\s*$', flags: "m"}
 Lisp/Julia:
   id-by:
     extension: [jl]
@@ -95,6 +58,13 @@ Lisp/Julia:
   - {method: "match", points: 1, for: "Lisp", pattern: '^\s*;', flags: "m"}
   - {method: "match", points: 1, for: "Lisp", pattern: '\((def|eval|require|export|let|loop|dec|format)', flags: "m"}
   - {method: "match", points: 1, for: "Julia", pattern: '^\s*(function|end|println|for|while)', flags: "m"}
+Lisp/OpenCL:
+  id-by:
+    extension: [cl]
+  scoring-rules:
+  - {method: "match", points: 100, for: "Lisp", pattern: '^\s*;', flags: "m"}
+  - {method: "match", points: 100, for: "Lisp", pattern: '\((def|eval|require|export|let|loop|dec|format)', flags: "m"}
+  - {method: "match", points: 100, for: "OpenCL", pattern: '^\s*(int|float|const|{)', flags: "m"}
 MATLAB/Mathematica/Objective-C/MUMPS/Mercury:
   id-by:
     extension: [m]
@@ -121,6 +91,15 @@ MATLAB/Mathematica/Objective-C/MUMPS/Mercury:
   - {method: "match", points: 1, for: "MATLAB", pattern: '^\s*function', flags: "m"}
   - {method: "match", points: 1, for: "MATLAB", pattern: '^\s*%', flags: "m"}
   - {method: "match", points: -1, for: "Objective-C", pattern: 'm{^\s*%', flags: "m"}
+Maven/XML:
+  id-by:
+     filename: [pom.xml]
+  scoring-rules:
+  - {method: "bias", points: 1.1, for: "XML"}
+  - {method: "match", points: 1, for: "Maven", pattern: '^\s*<project\s+', flags: "mi"}
+  - {method: "match", points: 1, for: "Maven", pattern: 'xmlns="http://maven.apache.org/POM/', flags: "mi"}
+  - {method: "match", points: -1, for: "XML", pattern: '^\s*<project\s+', flags: "mi"}
+  - {method: "match", points: -1, for: "XML", pattern: 'xmlns="http://maven.apache.org/POM/', flags: "mi"}
 Pascal/Puppet:
   id-by:
     extension: [pp]
@@ -151,20 +130,6 @@ Pascal/Puppet:
   - {method: "match", points: 1, for: "Puppet", pattern: '^\s*service\s+', flags: "m"}
   - {method: "match", points: 1, for: "Puppet", pattern: '\s\$\w+\s*\=\s*\S', flags: "m"}
   - {method: "match", points: 1, for: "Puppet", pattern: '\S\s*\=\>\s*\S', flags: "m"}
-Raku/Prolog:
-  id-by: 
-    extension: [p6, P6]
-  scoring-rules:
-  - {method: "match", points: 100, for: "Raku", pattern: '^#!.*?\bperl*;', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: '^=(head|over|item|cut)', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: ';\s*$', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: '(\{|\})', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: '^\s*sub\s+', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: '\s*<<', flags: "m"}
-  - {method: "match", points: 1, for: "Raku", pattern: '\$(\w+\->|[_!])', flags: "m"}
-  - {method: "match", points: 1, for: "Prolog", pattern: '\s*#', flags: "m"}
-  - {method: "match", points: 1, for: "Prolog", pattern: '\.\s*$', flags: "m"}
-  - {method: "match", points: 1, for: "Prolog", pattern: ":-", flags: "m"}
 Perl/Prolog:
   id-by:
     extension: [pl, PL]
@@ -179,13 +144,6 @@ Perl/Prolog:
   - {method: "match", points: 1, for: "Prolog", pattern: '\s*#', flags: "m"}
   - {method: "match", points: 1, for: "Prolog", pattern: '\.\s*$', flags: "m"}
   - {method: "match", points: 1, for: "Prolog", pattern: ":-", flags: "m"}
-Lisp/OpenCL:
-  id-by:
-    extension: [cl]
-  scoring-rules:
-  - {method: "match", points: 100, for: "Lisp", pattern: '^\s*;', flags: "m"}
-  - {method: "match", points: 100, for: "Lisp", pattern: '\((def|eval|require|export|let|loop|dec|format)', flags: "m"}
-  - {method: "match", points: 100, for: "OpenCL", pattern: '^\s*(int|float|const|{)', flags: "m"}
 PHP/Pascal:
   id-by:
     extension: [inc]
@@ -204,4 +162,56 @@ PHP/Pascal:
   - {method: "match", points: 001, for: "PHP", pattern: '\<\/script\>', flags: "mi"}
   - {method: "match", points: 100, for: "PHP", pattern: '<\%', flags: "m"}
   - {method: "match", points: 100, for: "PHP", pattern: '%\>', flags: "m"}
- 
+Qt/Glade:
+  id-by:
+    extension: [ui]
+    heuristic: Qt_or_Glade
+  scoring-rules:
+  - {method: "bias", points: 5, for: "Qt"}
+  - {method: "match", points: 10, for: "Glade", pattern: 'generated\s+with\s+glade', flags: "mi"}
+Raku/Prolog:
+  id-by: 
+    extension: [p6, P6]
+  scoring-rules:
+  - {method: "match", points: 100, for: "Raku", pattern: '^#!.*?\bperl*;', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: '^=(head|over|item|cut)', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: ';\s*$', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: '(\{|\})', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: '^\s*sub\s+', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: '\s*<<', flags: "m"}
+  - {method: "match", points: 1, for: "Raku", pattern: '\$(\w+\->|[_!])', flags: "m"}
+  - {method: "match", points: 1, for: "Prolog", pattern: '\s*#', flags: "m"}
+  - {method: "match", points: 1, for: "Prolog", pattern: '\.\s*$', flags: "m"}
+  - {method: "match", points: 1, for: "Prolog", pattern: ":-", flags: "m"}
+Scheme/SaltStack:
+  id-by:
+    extension: [sls]
+  scoring-rules:
+  - {method: "match", points: 4, for: "SaltStack", pattern: '{\%.*%}*', flags: "m"}
+  - {method: "match", points: 4, for: "SaltStack", pattern: '(/map\.jinja\b/)', flags: "m"}
+  - {method: "match", points: 1, for: "Scheme", pattern: '\((define|lambda|let|cond|do)\s', flags: "m"}
+TypeScript/Qt Linguist:
+  id-by:
+    extension: [ts]
+  scoring-rules:
+  - {method: "match", points: 100, for: "Qt Linguist", pattern: '\b</?(message|source|translation)>', flags: "m"}
+  - {method: "match", points: 1, for: "TypeScript", pattern: '^\s*(var|const|let|class|document)\b', flags: "m"}
+  - {method: "match", points: 1, for: "TypeScript", pattern: '[;}]\s*$', flags: "m"}
+  - {method: "match", points: 1, for: "TypeScript", pattern: '^\s*', flags: "m"}
+Verilog-SystemVerilog/Coq:
+  id-by:
+    extension: [v]
+  scoring-rules:
+  - {method: "match", points: 1, for: "Verilog-SystemVerilog", pattern: '^\s*(module|begin|input|output|always)', flags: "mi"}
+  - {method: "match", points: 1, for: "Coq", pattern: '\b(Inductive|Fixpoint|Definition|Theorem|Lemma|Proof|Qed|forall|Section|Check|Notation|Variable|Goal|Fail|Require|Scheme|Module|Ltac|Set|Unset|Parameter|Coercion|Axiom|Locate|Type|Record|Existing|Class)\b', flags: "mi"}
+Visual Basic/TeX/Apex Class:
+  id-by:
+    extension: [cls]
+  scoring-rules:
+  - {method: "match", points: 1, for: "TeX", pattern: '\s*%', flags: "m"}
+  - {method: "match", points: 1, for: "TeX", pattern: '\s*\\', flags: "m"}
+  - {method: "match", points: 1, for: "Visual Basic", pattern: '^\s*(public|private)\s', flags: "mi"}
+  - {method: "match", points: 1, for: "Apex Class", pattern: '^\s*(public|private)\s', flags: "mi"}
+  - {method: "match", points: 1, for: "Visual Basic", pattern: '^\s*(end|attribute|version)\s', flags: "mi"}
+  - {method: "match", points: 1, for: "Apex Class", pattern: '[{}]', flags: "m"}
+  - {method: "match", points: 1, for: "Apex Class", pattern: ';\s*$', flags: "m"}

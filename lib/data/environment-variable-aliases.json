@@ -10,7 +10,8 @@
         "LOCI_ENV_threads": "threads",
         "LOCI_ENV_timeout": "timeout",
         "LOCI_ENV_format": "format",
-        "LOCI_ENV_verbosity": "verbosity"
+        "LOCI_ENV_verbosity": "verbosity",
+        "LOCI_ENV_tt": "thread-threshold"
     },
     "friendlies":
     {
@@ -23,6 +24,7 @@
         "LOCI_ENV_THREADS": "threads",
         "LOCI_ENV_THREAD_TIMEOUT_SEC": "timeout",
         "LOCI_ENV_OUTPUT_FORMAT": "format",
-        "LOCI_ENV_VERBOSITY": "verbosity"
+        "LOCI_ENV_VERBOSITY": "verbosity",
+        "LOCI_ENV_THREAD_THRESHOLD": "thread-threshold"
     }
 }
