@@ -42,7 +42,16 @@ Output:
         html - cleaned, sorted HTML, using h2 and table tags
         csv - comma saparated values
     For all but RAW format, language counts are displayed in case-insentitive alphanumeric order
-
+--scale    Multiply totals by language-specific scale factor
+--to:<filespec>  Output to file instead of console
+--suppress:<list> Suppress one more more components of the output:
+    Separate multiple components with semicolons.
+    Suppressible output components are:
+        times  - Suppress the table of time statistics
+        code   - Suppress individual code counts
+        files  - Supporess the table of file statistics
+        totals - Suppress the the sum of code statistcs at the bottom of the individual code counts list
+        
 Logging:
 --verbosity=<level>     Information displayed while processing. One of silent, info, debug, thread. Defaults to silent.
                         Setting to 'debug' will cause the runtime options (aggregation of defaults, environment and switches) to be included in the output report

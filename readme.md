@@ -110,7 +110,7 @@ This, of course, is not much use. A more complete program would look like this:
     //Alternatively, process the json object elsewhere in your project.
     const formatter = Loci.GetFormatter(options);
     const textResult = formatter.Format(output);
-    console.log(textResult);
+    Loci.Output(textResult, options);
 ```
 
 That's it! Happy coding!
@@ -146,9 +146,17 @@ The license is MIT, so feel free to branch and experiment as you please.
 - Only tested on windows and Linux
 - Only runs in single-threaded mode on Node versions lower than 15.0.0. No intent to fix.
 - Cucumber test fails (for Robot language only) in node 14.0.0 (passes in higher versions)
-- Node 14.0.0 runs in single threaded mode only
 
 ## Release Notes
+
+### Version 1.0.7
+- Added scale factor option
+- Added --to: switch for output to file
+- Added --supress switch for aSuppression of output components (times, files, code counts, totals)
+- Added raster count support for XML, XSD
+- Fixed - files being opened rw in certain circumstances, causing exceptions in certain circumstances
+- Fixed - not ignoring node_modules folders and some others
+- Fixed - zero value in indicidual code counts regression introduced in 1.0.6
 
 ### Version 1.0.6
 - Added static methods to Loci to get logger, formatter, and default options, so that only Loci module need be imported
@@ -180,19 +188,13 @@ The license is MIT, so feel free to branch and experiment as you please.
 - Added version check to generate error and exit on node versions below 15.0.0
 
 ## Roadmap
-
 - Raster scan support for all languages (ongoing effort)
-- A --otf: (output to file) switch
-- Suppress outputs (times, files, counts, sum)
 - Custom XSLT, JSON Transforms, and/or HTML CSS for results formatting
 - Use .gitignore to filter out files and folders
 - Custom definitions for disambiguation and languages
-- Output lists (scanned, unique, ignored, etc) to individual lists
+- Output (scanned, unique, ignored, etc) to activity list
 - Output as SQL inserts
 - Scan inside archives
 - Additional languages (on request)
 - Scan remote git repos
-- Scale Factor option
 
-Finally, may the Source be with you...
-0b1

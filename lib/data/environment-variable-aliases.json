@@ -8,10 +8,13 @@
         "LOCI_ENV_unique": "unique",   
         "LOCI_ENV_langs": "langs",
         "LOCI_ENV_threads": "threads",
+        "LOCI_ENV_scale": "scale",
         "LOCI_ENV_timeout": "timeout",
         "LOCI_ENV_format": "format",
         "LOCI_ENV_verbosity": "verbosity",
-        "LOCI_ENV_tt": "thread-threshold"
+        "LOCI_ENV_tt": "thread-threshold",
+        "LOCI_ENV_TO": "to",
+        "LOCI_ENV_suppress": "suppress"
     },
     "friendlies":
     {
@@ -22,9 +25,12 @@
         "LOCI_ENV_ONLY_UNIQUE_FILES": "unique",   
         "LOCI_ENV_LANGUAGE_OVERRIDES": "langs",
         "LOCI_ENV_THREADS": "threads",
+        "LOCI_ENV_SCALE_FACTOR": "scale",
         "LOCI_ENV_THREAD_TIMEOUT_SEC": "timeout",
         "LOCI_ENV_OUTPUT_FORMAT": "format",
         "LOCI_ENV_VERBOSITY": "verbosity",
-        "LOCI_ENV_THREAD_THRESHOLD": "thread-threshold"
+        "LOCI_ENV_THREAD_THRESHOLD": "thread-threshold",
+        "LOCI_ENV_TO_FILE": "to",
+        "LOC_ENV_SUPPRESS_OUTPUT": "suppress"
     }
 }

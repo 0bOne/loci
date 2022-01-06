@@ -14,5 +14,8 @@
     "options": "",
     "help": false,
     "raster": false,
+    "scale": false,
+    "to": "",
+    "suppress": [],
     "sources": []
 }

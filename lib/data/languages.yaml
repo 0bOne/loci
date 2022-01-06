@@ -64,6 +64,7 @@ Apex Class:
   - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.4 
 Apex Trigger:
   id-by:
     extension: [trigger]
@@ -235,13 +236,13 @@ C:
   line-continuation: '\\\\$'  
 C#:
   id-by: ~
-  scale-factor: 1.36
   line-continuation: '\\\\$'  
   filters:
   - {method: "mask-in-strings", quotes: ['"'], targets: ['//', '/*', '*/']}
   - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 1.36
 C# Designer:
   id-by:
     extension: [designer.cs]
@@ -501,8 +502,7 @@ Dockerfile:
     extension: [Dockerfile, dockerfile]
     prefix: [Dockerfile]
     filename: [Dockerfile.m4, Dockerfile, Dockerfile.cmake, dockerfile, dockerfile.m4, dockerfile.cmake]
-  filters:
- 
+  filters: 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 2.00
 DOORS Extension Language:
@@ -600,8 +600,7 @@ Erlang:
 Expect:
   id-by:
     extension: [exp]
-  filters:
- 
+  filters: 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL  
   scale-factor: 2.00
   line-continuation: '\\\\$'
@@ -630,7 +629,6 @@ Fish Shell:
   id-by:
     extension: [fish]
   filters:
- 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 3.81
 Focus:
@@ -684,11 +682,11 @@ Fortran 95:
   - {method: "decomment", language: "fortran77"}
   - {method: "decomment", language: "fortran90"}
   - {method: "remove", pattern: '\!.*$', flags: "gm"}
+  scale-factor: 1.13
 GDScript:
   id-by:
     extension: [gd]
   filters:
- 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 2.50
 Gencat NLS:
@@ -765,7 +763,6 @@ GraphQL:
   id-by:
     extension: [graphqls, gql, graphql]
   filters:
- 
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 4.00
 Groovy:
@@ -1044,6 +1041,12 @@ Korn Shell:
     shebang: [ksh]
   filters:
     - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+
+
+
+
+
+
   scale-factor: 3.81
 Kotlin:
   id-by:
@@ -1230,7 +1233,6 @@ MUMPS:
 Mustache:
   id-by:
     extension: [mustache]
-  #debug-save: true
   filters:
   - {method: "remove-between", lhs: '{{!', rhs: '}}' }
   scale-factor: 1.75
@@ -1241,7 +1243,6 @@ MXML:
   - {method: "remove", pattern: '//.*$', flags: "gm"}
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
-  #- {method: "add-newlines"}
   scale-factor: 1.90
   line-continuation: '\\\\$'
 Mercury:
@@ -1313,9 +1314,8 @@ OCaml:
 Octave:
   id-by:
     shebang: [octave]
-  filters:
- 
-    - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
+  filters: 
+  - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 4.00
   line-continuation: '\.\.\.\s*$'
 Odin:
@@ -1411,6 +1411,7 @@ PlantUML:
   filters:
   - {method: "remove-between", lhs: "/'", rhs: "'/" }
   - {method: "remove", pattern: '^\s*\x27.*$', flags: "gm"}
+  scale-factor: 1.0
 PO File:
   id-by:
     extension: [po]
@@ -1440,6 +1441,7 @@ ProGuard:
   id-by: ~
   filters:
   - {method: "remove", pattern: '#.*$', flags: "gm"} # comments to EOL
+  scale-factor: 1.00
 Prolog:
   id-by:
     extension: [yap, prolog, P]
@@ -1479,6 +1481,7 @@ Puppet:
   - {method: "remove", pattern: "\\ *$", flags: "gm"}  #join C++ style continued lines
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 3.00
 PureScript:
   id-by:
     extension: [purs]
@@ -1661,7 +1664,7 @@ SaltStack:
   id-by: ~
   filters:
   - {method: "remove", pattern: '^\s*\#.*$', flags: "gm"} # comments to EOL 
-  scale-factor: 200
+  scale-factor: 2.00
 SAS:
   id-by:
     extension: [sas]
@@ -1809,6 +1812,7 @@ SQL Data:
   - {method: "remove", pattern: "\/\/.*$", flags: "gm"}  # remove C++ style comments
   - {method: "remove", pattern: "--.*$", flags: "gm"}  # remove comments to EOL
   - {method: "remove-between", lhs: '/*', rhs: '*/'}
+  scale-factor: 6.15
 SQL Stored Procedure:
   id-by:
     extension: [sproc.sql, spoc.sql, spc.sql, udf.sql]
@@ -2250,6 +2254,10 @@ XML:
     extension: [zcml, xul, xspec, xproj, xml.dist, xliff, xlf, xib, xacro, x3d, wsf, web.release.config, web.debug.config, web.config, vxml, vstemplate, vssettings, vsixmanifest, vcxproj, ux, urdf, tmtheme, tmsnippet, tmpreferences, tmlanguage, tml, tmcommand, targets, sublime-snippet, sttheme, storyboard, srdf, shproj, sfproj, settings.stylecop, scxml, rss, resx, rdf, pt, psc1, ps1xml, props, proj, plist, pkgproj, packages.config, osm, odd, nuspec, nuget.config, nproj, ndproj, natvis, mjml, mdpolicy, launch, kml, jsproj, jelly, ivy, iml, grxml, gmx, fsproj, filters, dotsettings, dll.config, ditaval, ditamap, depproj, ct, csl, csdef, cscfg, cproject, clixml, ccxml, ccproj, builds, axml, app.config, ant, admx, adml, project, classpath, xml, XML]
   filters:
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  raster:
+  - {type: "string", start: "'", end: "'"}
+  - {type: "string", start: '"', end: '"'}
+  - {type: "comment", start: '<!--', end: '-->'}
   scale-factor: 1.90
 XQuery:
   id-by:
@@ -2262,12 +2270,16 @@ XSD:
     extension: [xsd, XSD]
   filters:
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  raster:
+  - {type: "reuse", sources: [XML]}
   scale-factor: 1.90
 XSLT:
   id-by:
     extension: [xslt, XSLT, xsl, XSL]
   filters:
   - {method: "remove-between", lhs: '<!--', rhs: '-->' }
+  raster:
+  - {type: "reuse", sources: [XML]}
   scale-factor: 1.90
 Xtend:
   id-by:
@@ -2308,4 +2320,3 @@ zsh:
   - {method: "remove", pattern: '\#.*$', flags: "gm"} # comments to EOL 
   scale-factor: 3.81
   line-continuation: '\\\\$'
-

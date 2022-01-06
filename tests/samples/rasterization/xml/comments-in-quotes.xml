@@ -1,0 +1,5 @@
+<root>
+    <node1 attribute="<!--" >this is the first node</node1>
+    <node2>this is the second node</node2>
+    <node attribute='-->'>this is the third node</node3>
+</root><!--the is an inline comment that gets ignored -->

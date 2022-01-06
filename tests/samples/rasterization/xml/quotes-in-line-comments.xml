@@ -1,0 +1,6 @@
+<root>
+    <node1 attribute="value" >this is the first node</node1>
+    <node2>this is the second node</node2>
+    <!--this is the "first" comment-->
+    <node3>this is the third node</node3>
+</root><!--the is the second "comment" -->

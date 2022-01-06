@@ -5,7 +5,7 @@ const Loci = require('../../../lib/Loci');
 
 Given('I have code in folder {string}', function (folderName) 
 {    
-    const sampleFolder = path.resolve(__dirname, "..", "..", "samples", folderName);
+    const sampleFolder = path.resolve(__dirname, "..", "..", "samples", "count", folderName);
     this.options = Loci.LoadDefaultOptions();
     this.options.threads = 1;
     this.options.sources.push(sampleFolder);
@@ -13,7 +13,7 @@ Given('I have code in folder {string}', function (folderName)
 
 Given('the code in {string}', function (fileName) 
 {    
-    const fileSpec = path.resolve(__dirname, "..", "..", "raster-code", fileName);
+    const fileSpec = path.resolve(__dirname, "..", "..", "samples", "rasterization", fileName);
     this.options = Loci.LoadDefaultOptions();
     this.options.threads = 1;
     this.options.sources.push(fileSpec);

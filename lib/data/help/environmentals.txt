@@ -29,8 +29,11 @@ Original            Alias (Readable notation)               Original (Terse)    
 --i                 LOCI_ENV_EXCLUDE_IGNORE_CASE            LOCI_ENV_i              (set to 'true')
 --unique            LOCI_ENV_ONLY_UNIQUE_FILES              LOCI_ENV_unique         (set to 'true')
 --langs:<list>      LOCI_ENV_LANGUAGE_OVERRIDES             LOCI_ENV_langs
+--scale             LOCI_ENV_SCALE_FACTOR                   LOCI_ENV_SCALE_FACTOR   (set t0 'true')
 --threads:<n>       LOCI_ENV_THREADS                        LOCI_ENV_threads
 --tf                LOCI_ENV_THREAD_FILES                   LOCI_ENV_tf
+--to                LOCI_ENV_TO_FILE                        LOCI_ENV_to
+--suppress          LOC_ENV_SUPPRESS_OUTPUT                 LOCI_ENV_suppress
 --timeout:<n>       LOCI_ENV_THREAD_TIMEOUT_SEC             LOCI_ENV_timeout
 --format:<value>    LOCI_ENV_OUTPUT_FORMAT                  LOCI_ENV_format
 --verbosity:<value> LOCI_ENV_VERBOSITY                      LOCI_ENV_verbosity
